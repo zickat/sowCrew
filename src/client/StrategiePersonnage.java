@@ -54,6 +54,34 @@ public class StrategiePersonnage {
 			e.printStackTrace();
 		}
 	}
+	
+	/**
+	 * Cree la console associe et la strategie associe a un personnage
+	 * @param ipArene ip de communication avec l'arene
+	 * @param port port de communication avec l'arene
+	 * @param ipConsole ip de la console du personnage
+	 * @param Le personnage associe a la strategie
+	 * @param nbTours nombre de tours pour ce personnage (si negatif, illimite)
+	 * @param position position initiale du personnage dans l'arene
+	 * @param logger gestionnaire de log
+	 */
+	public StrategiePersonnage(String ipArene, int port, String ipConsole, 
+			Personnage pers,
+			int nbTours, Point position, LoggerProjet logger) {
+		
+		logger.info("Lanceur", "Creation de la console...");
+		
+		try {
+			console = new Console(ipArene, port, ipConsole, this, 
+					pers, 
+					nbTours, position, logger);
+			logger.info("Lanceur", "Creation de la console reussie");
+			
+		} catch (Exception e) {
+			logger.info("Personnage", "Erreur lors de la creation de la console : \n" + e.toString());
+			e.printStackTrace();
+		}
+	}
 
 	// TODO etablir une strategie afin d'evoluer dans l'arene de combat
 	// une proposition de strategie (simple) est donnee ci-dessous

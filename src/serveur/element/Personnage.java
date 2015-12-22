@@ -3,8 +3,11 @@
  */
 package serveur.element;
 
+import java.awt.Point;
 import java.util.HashMap;
 
+import client.StrategiePersonnage;
+import logger.LoggerProjet;
 import utilitaires.Calculs;
 
 /**
@@ -57,4 +60,10 @@ public class Personnage extends Element {
 		Integer vie = caracts.get(Caracteristique.VIE);
 		return vie != null && vie > 0;
 	}
+	
+	public void strategie(String ipArene, int port, String ipConsole, 
+			int nbTours, Point position, LoggerProjet logger){
+		new StrategiePersonnage(ipArene, port, ipConsole, this, nbTours, position, logger);
+	}
+	
 }

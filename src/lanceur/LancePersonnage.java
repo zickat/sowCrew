@@ -8,6 +8,7 @@ import java.util.HashMap;
 import client.StrategiePersonnage;
 import logger.LoggerProjet;
 import serveur.element.Caracteristique;
+import serveur.element.Personnage;
 import utilitaires.Calculs;
 import utilitaires.Constantes;
 
@@ -77,7 +78,9 @@ public class LancePersonnage {
 			
 			Point position = Calculs.positionAleatoireArene();
 			
-			new StrategiePersonnage(ipArene, port, ipConsole, nom, groupe, caracts, nbTours, position, logger);
+			//new StrategiePersonnage(ipArene, port, ipConsole, nom, groupe, caracts, nbTours, position, logger);
+			Personnage p = new Personnage(nom, groupe, caracts);
+			p.strategie(ipArene, port, ipConsole, nbTours, position, logger);
 			logger.info("Lanceur", "Creation du personnage reussie");
 			
 		} catch (Exception e) {
