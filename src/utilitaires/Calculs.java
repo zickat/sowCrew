@@ -220,4 +220,15 @@ public class Calculs {
 		
 		return res;
 	}
+
+	/**
+	 * Donne le point oppose au point a eviter
+	 * @param depart point ou on est positionne
+	 * @param aEviter point que l'on veut eviter
+	 * @return le point symetrique a aEviter par le point de depart
+	 */
+	public static Point directionOpposee(Point depart, Point aEviter) {
+		return new Point(depart.x + (depart.x - aEviter.x),
+				depart.y + (depart.y - aEviter.y));
+	}
 }
