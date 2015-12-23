@@ -15,6 +15,16 @@ import utilitaires.Constantes;
 
 public class Fuite extends StrategiePersonnage {
 
+	/**
+	 * Cree la console associe et la strategie associe a un personnage
+	 * @param ipArene ip de communication avec l'arene
+	 * @param port port de communication avec l'arene
+	 * @param ipConsole ip de la console du personnage
+	 * @param Le personnage associe a la strategie
+	 * @param nbTours nombre de tours pour ce personnage (si negatif, illimite)
+	 * @param position position initiale du personnage dans l'arene
+	 * @param logger gestionnaire de log
+	 */
 	public Fuite(String ipArene, int port, String ipConsole, Personnage pers, int nbTours, Point position,
 			LoggerProjet logger) {
 		super(ipArene, port, ipConsole, pers, nbTours, position, logger);

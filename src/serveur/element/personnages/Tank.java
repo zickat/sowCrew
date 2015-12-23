@@ -1,6 +1,9 @@
 package serveur.element.personnages;
+import java.awt.Point;
 import java.util.HashMap;
 
+import client.strategies.Fuite;
+import logger.LoggerProjet;
 import serveur.element.Caracteristique;
 import serveur.element.Personnage;
 import utilitaires.Calculs;
@@ -25,7 +28,16 @@ public class Tank extends Personnage {
 	public Tank(String nom, String groupe) {
 		super(nom, groupe, new HashMap<Caracteristique, Integer>());
 		incrementeCaract(Caracteristique.VIE, Calculs.restreintCarac(Caracteristique.VIE, 100));
-		incrementeCaract(Caracteristique.FORCE, Calculs.restreintCarac(Caracteristique.FORCE, 0));
+		incrementeCaract(Caracteristique.FORCE, Calculs.restreintCarac(Caracteristique.FORCE, 50));
+		incrementeCaract(Caracteristique.VITESSE, Calculs.restreintCarac(Caracteristique.VITESSE, 5));
 	}
 
+	@Override
+	public void strategie(String ipArene, int port, String ipConsole, int nbTours, Point position,
+			LoggerProjet logger) {
+		new Fuite(ipArene, port, ipConsole, this, nbTours, position, logger);
+	}
+
+	
+	
 }

@@ -4,6 +4,7 @@ import java.awt.Point;
 import java.rmi.RemoteException;
 import java.util.HashMap;
 
+import serveur.element.Caracteristique;
 import serveur.vuelement.VuePersonnage;
 import utilitaires.Calculs;
 
@@ -77,12 +78,13 @@ public class Deplacement {
 	 */
 	public void seDirigeVers(Point objectif) throws RemoteException {
 		Point cible = Calculs.restreintPositionArene(objectif); 
-		
+		Point temp = personnage.getPosition();
 		// on cherche le point voisin vide
-		Point dest = Calculs.meilleurPoint(personnage.getPosition(), cible, voisins);
-		
-		if(dest != null) {
-			personnage.setPosition(dest);
+		for(int i=0; i < personnage.getElement().getCaract(Caracteristique.VITESSE); i++){
+			temp = Calculs.meilleurPoint(temp, cible, voisins);
+		}
+		if(temp != null) {
+			personnage.setPosition(temp);
 		}
 	}
 }
