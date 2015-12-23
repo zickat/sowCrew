@@ -16,12 +16,12 @@ public class Deplacement {
 	/**
 	 * Vue du personnage qui veut se deplacer.
 	 */
-	private VuePersonnage personnage;
+	protected VuePersonnage personnage;
 	
 	/**
 	 * References RMI et vues des voisins (calcule au prealable). 
 	 */
-	private HashMap<Integer, Point> voisins;
+	protected HashMap<Integer, Point> voisins;
 	
 	/**
 	 * Cree un deplacement.
