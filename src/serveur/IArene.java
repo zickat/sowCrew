@@ -177,6 +177,19 @@ public interface IArene extends Remote {
 	public boolean lanceAttaque(int refRMI, int refAdv) throws RemoteException;
 	
 	/**
+	 * Execute un soin du personnage correspondant a la console donnée
+	 * et l'amis correspondant à la reference RMI donnee
+	 * Le duel echoue si une action a deja ete effectue a ce tour par
+	 * l'attaquant, si les personnages sont trop eloignes, si l'un des deux
+	 * n'est plus actif (mort)
+	 * @param refRMI reference rmi du soigneur
+	 * @param amis reference RMI du soigne
+	 * @return vrai si l'action a eu lieu, faux sinon
+	 * @throws RemoteException
+	 */
+	public boolean soigner(int refRMI, int amis) throws RemoteException;
+	
+	/**
 	 * Deplace le personnage correspondant a la console donne vers l'element 
 	 * correspondant a la reference RMI cible.
 	 * Le deplacement echoue si une action a deja ete executee a ce tour par 
