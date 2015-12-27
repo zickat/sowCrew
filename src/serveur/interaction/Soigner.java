@@ -6,7 +6,6 @@ import serveur.Arene;
 import serveur.element.Caracteristique;
 import serveur.element.Personnage;
 import serveur.vuelement.VuePersonnage;
-import utilitaires.Calculs;
 
 public class Soigner extends Interaction<VuePersonnage> {
 
@@ -22,7 +21,6 @@ public class Soigner extends Interaction<VuePersonnage> {
 		try {
 			arene.incrementeCaractElement(defenseur, Caracteristique.VIE, c);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
