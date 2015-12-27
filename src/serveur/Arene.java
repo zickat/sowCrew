@@ -25,6 +25,7 @@ import serveur.interaction.Deplacement;
 import serveur.interaction.Duel;
 import serveur.interaction.Ramassage;
 import serveur.interaction.Soigner;
+import serveur.interaction.Teleportation;
 import serveur.vuelement.VueElement;
 import serveur.vuelement.VuePersonnage;
 import serveur.vuelement.VuePotion;
@@ -902,6 +903,22 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 			res = true;
 		}
 		
+		return res;
+	}
+	
+	@Override
+	public boolean teleporte(int refRMI, Point objectif) throws RemoteException {
+		boolean res = false;
+		
+		VuePersonnage client = personnages.get(refRMI);
+		
+		if(client.isActionExecutee()){
+			logActionDejaExecutee(refRMI);
+		}else{
+			new Teleportation(client, getVoisins(refRMI)).seDirigeVers(objectif);
+			client.executeAction();
+			res = true;
+		}
 		return res;
 	}
 

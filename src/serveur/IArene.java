@@ -214,7 +214,16 @@ public interface IArene extends Remote {
 	 */
 	public boolean deplace(int refRMI, Point objectif) throws RemoteException;
 	
-	
+	/**
+	 * Deplace le personnage cible a la position donne par le point objectif
+	 * Le deplacement echoue si une action a deja ete effectuee a ce tour par
+	 * ce personnage
+	 * @param refRMI reference RMI du personnage voulant se deplacer
+	 * @param objectif point vers lequel sera teleporte le personnage
+	 * @return vrai si l'action a eu lieu, faux sinon
+	 * @throws RemoteException
+	 */
+	public boolean teleporte(int refRMI, Point objectif) throws RemoteException;
 
 	
 
