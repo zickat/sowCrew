@@ -23,6 +23,7 @@ import serveur.element.Personnage;
 import serveur.element.Potion;
 import serveur.interaction.Deplacement;
 import serveur.interaction.Duel;
+import serveur.interaction.Interaction;
 import serveur.interaction.Ramassage;
 import serveur.interaction.Soigner;
 import serveur.interaction.Teleportation;
@@ -804,17 +805,12 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 		return res;
 	}
 	
-	public void seCamouflerOuDeCamoufler(int refRMI) throws RemoteException{
-		VuePersonnage p = (VuePersonnage)vueFromRef(refRMI);
-		p.setVisible(!p.isVisible());
-	}
-	
-	@Override
-	public boolean soigner(int refRMI, int amis) throws RemoteException {
+	@SuppressWarnings("unchecked")
+	public boolean interagir(int refRMI, int refRMIAdv, String nomInter) throws RemoteException{
 		boolean res = false;
 		
 		VuePersonnage client = personnages.get(refRMI);
-		VuePersonnage clientAdv = personnages.get(amis);
+		VuePersonnage clientAdv = personnages.get(refRMIAdv);
 		
 		if (personnages.get(refRMI).isActionExecutee()) {
 			// si une action a deja ete executee
@@ -823,27 +819,37 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 		} else {
 			// sinon, on tente de jouer l'interaction
 			IConsole console = consoleFromRef(refRMI);
-			IConsole consoleAdv = consoleFromRef(amis);
+			IConsole consoleAdv = consoleFromRef(refRMIAdv);
 			
 			int distance = Calculs.distanceChebyshev(personnages.get(refRMI).getPosition(), 
-					personnages.get(amis).getPosition());
+					personnages.get(refRMIAdv).getPosition());
 
 			// on teste la distance entre les personnages
 			if (distance <= Constantes.DISTANCE_MIN_INTERACTION) {
 				Personnage pers = (Personnage) elementFromRef(refRMI);
-				Personnage persAdv = (Personnage) elementFromRef(amis);
+				Personnage persAdv = (Personnage) elementFromRef(refRMIAdv);
 				
 				// on teste que les deux personnages soient en vie
 				if (pers.estVivant() && persAdv.estVivant()) {
 					console.log(Level.INFO, Constantes.nomClasse(this), 
-							"J'attaque " + nomRaccourciClient(amis));
+							"J'attaque " + nomRaccourciClient(refRMIAdv));
 					consoleAdv.log(Level.INFO, Constantes.nomClasse(this), 
 							"Je me fait attaquer par " + nomRaccourciClient(refRMI));
 					
 					logger.info(Constantes.nomClasse(this), nomRaccourciClient(refRMI) + 
 							" attaque " + nomRaccourciClient(consoleAdv.getRefRMI()));
 			
-					new Soigner(this, client, clientAdv).interagit();
+					try {
+						Class<?> c = Class.forName(nomInter);
+						Interaction<VuePersonnage> i = 
+								(Interaction<VuePersonnage>) c.newInstance();
+						i.instancier(this, client, clientAdv);
+						i.interagit();
+					} catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+						e.printStackTrace();
+					}
+					
+					
 					personnages.get(refRMI).executeAction();
 					
 					// si l'adversaire est mort
@@ -859,22 +865,27 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 					res = true;
 				} else {
 					logger.warning(Constantes.nomClasse(this), nomRaccourciClient(refRMI) + 
-							" a tente d'interagir avec "+nomRaccourciClient(amis)+", alors qu'il est mort...");
+							" a tente d'interagir avec "+nomRaccourciClient(refRMIAdv)+", alors qu'il est mort...");
 					
 					console.log(Level.WARNING, Constantes.nomClasse(this), 
-							nomRaccourciClient(amis) + " est deja mort !");
+							nomRaccourciClient(refRMIAdv) + " est deja mort !");
 				}
 			} else {
 				logger.warning(Constantes.nomClasse(this), nomRaccourciClient(refRMI) + 
-						" a tente d'interagir avec "+nomRaccourciClient(amis) + 
+						" a tente d'interagir avec "+nomRaccourciClient(refRMIAdv) + 
 						", alors qu'il est trop eloigne... Distance de chebyshev = " + distance);
 				
 				console.log(Level.WARNING, "AVERTISSEMENT ARENE", 
-						nomRaccourciClient(amis) + " est trop eloigne !\nDistance = " + distance);
+						nomRaccourciClient(refRMIAdv) + " est trop eloigne !\nDistance = " + distance);
 			}
 		}
 		
 		return res;
+	}
+	
+	public void seCamouflerOuDeCamoufler(int refRMI) throws RemoteException{
+		VuePersonnage p = (VuePersonnage)vueFromRef(refRMI);
+		p.setVisible(!p.isVisible());
 	}
 	
 	@Override

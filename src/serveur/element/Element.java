@@ -72,6 +72,10 @@ public abstract class Element implements Serializable {
 		return groupe;
 	}
 	
+	public void setGroupe(String groupe){
+		this.groupe = groupe;
+	}
+	
 	public String getNomGroupe() {
 		return nom + "_" + groupe;
 	}

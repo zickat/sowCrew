@@ -111,6 +111,10 @@ public class VuePersonnage extends VueElement<Personnage> implements Comparable<
 	public boolean isVisible() {
 		return visible;
 	}
+	
+	public void setGroupe(String groupe){
+		element.setGroupe(groupe);
+	}
 
 	public void setVisible(boolean visible) {
 		this.visible = visible;

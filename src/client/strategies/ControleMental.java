@@ -70,12 +70,12 @@ public class ControleMental extends StrategiePersonnage {
 						arene.setPhrase(refRMI, "Reste avec moi "+autre.getNom());
 						arene.lanceAttaque(refRMI, enemis);
 					}else{
-						VuePersonnage maVue = (VuePersonnage)arene.vueFromRef(refRMI);
+						//VuePersonnage maVue = (VuePersonnage)arene.vueFromRef(refRMI);
 						VuePersonnage defenseur = (VuePersonnage)arene.vueFromRef(enemis);
 						//System.err.println("1");
-						Interaction<VuePersonnage> i = new Hypnose((Arene) arene, maVue, defenseur);
+						//Interaction<VuePersonnage> i = new Hypnose((Arene) arene, maVue, defenseur);
 						//System.err.println("2");
-						//arene.executerInteraction(refRMI, enemis, i);
+						arene.interagir(refRMI, enemis, Hypnose.class.getName());
 						arene.setPhrase(refRMI, "Tu es a moi "+defenseur.getElement().getNom());
 						controleActif = true;
 					}

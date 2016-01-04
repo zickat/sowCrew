@@ -9,10 +9,10 @@ import serveur.vuelement.VuePersonnage;
 
 public class Soigner extends Interaction<VuePersonnage> {
 
-	public Soigner(Arene arene, VuePersonnage attaquant, VuePersonnage defenseur) {
-		super(arene, attaquant, defenseur);
+	public Soigner(){
+		super();
 	}
-
+	
 	@Override
 	public void interagit() {
 		Personnage pAttaquant = attaquant.getElement();

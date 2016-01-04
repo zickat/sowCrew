@@ -13,6 +13,7 @@ import logger.LoggerProjet;
 import serveur.IArene;
 import serveur.element.Element;
 import serveur.element.Personnage;
+import serveur.interaction.Soigner;
 import utilitaires.Calculs;
 import utilitaires.Constantes;
 
@@ -64,7 +65,8 @@ public class Heal extends StrategiePersonnage {
 				Element autre = arene.elementFromRef(amis);
 				if(distance <= Constantes.DISTANCE_MIN_INTERACTION){
 					arene.setPhrase(refRMI, "Reste avec moi "+autre.getNom());
-					arene.soigner(refRMI, amis);
+					//arene.soigner(refRMI, amis);
+					arene.interagir(refRMI, amis, Soigner.class.getName());
 				}else{
 					arene.setPhrase(refRMI, "Viens la, mon amis que je te soigne !");
 					arene.deplace(refRMI, amis);

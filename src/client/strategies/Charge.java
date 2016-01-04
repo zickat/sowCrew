@@ -50,6 +50,7 @@ public class Charge extends StrategiePersonnage {
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+		//arene.seCamouflerOuDeCamoufler(refRMI);
 		Personnage p = (Personnage)arene.elementFromRef(refRMI);
 		Voisins v = new Voisins(voisins, position, p);
 		int refEnnemi = v.ennemisLePlusProche(arene); 

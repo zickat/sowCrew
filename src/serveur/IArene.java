@@ -184,17 +184,14 @@ public interface IArene extends Remote {
 	public void seCamouflerOuDeCamoufler(int refRMI) throws RemoteException;
 	
 	/**
-	 * Execute un soin du personnage correspondant a la console donnée
-	 * et l'amis correspondant à la reference RMI donnee
-	 * Le duel echoue si une action a deja ete effectue a ce tour par
-	 * l'attaquant, si les personnages sont trop eloignes, si l'un des deux
-	 * n'est plus actif (mort)
-	 * @param refRMI reference rmi du soigneur
-	 * @param amis reference RMI du soigne
-	 * @return vrai si l'action a eu lieu, faux sinon
+	 * Permet n'importe quelle interaction entre deux personnages
+	 * @param refRMI reference RMI du personnage correspondants a la console
+	 * @param refRMIAdv reference RMI de l'opposant
+	 * @param nomInter nom de la classe faisant l'interaction (extends Interaction)
+	 * @return vrai si l'action a bien eu lieu, faux sinon
 	 * @throws RemoteException
 	 */
-	public boolean soigner(int refRMI, int amis) throws RemoteException;
+	public boolean interagir(int refRMI, int refRMIAdv, String nomInter) throws RemoteException;
 	
 	/**
 	 * Deplace le personnage correspondant a la console donne vers l'element 
