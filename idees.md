@@ -4,6 +4,7 @@ _ Faire une simulation d'un combat en 1v1 pour définir la meilleure stratégie 
 _ Coder exécuter intéractions : permet d'exécuter n'importe quelle intéraction (codage dans arène)
 _ Stratégie combo Healer Berseker (le healer cherche en priorité un berseker dans l'équipe)
 _ Stratégie regroupement
+_ Stratégie mentalist -> définir meilleur ennemi à convertir
 
 BONUS :
 _ Armure : prends comme dégâts force - armure. L'armure baisse.
@@ -25,3 +26,4 @@ _ Alchimiste : drop des potions (NE LES RAMASSE PAS)
 _ Warrior : balancé en attaque et vie
 _ Necromancien : quand quelqu'un meurt il fait pop un squelette
 _ Lyche : drrain de vie équivalent à sa force
+_ Mentalist (locale) : convertion d'un personnage ennemi en allié 
