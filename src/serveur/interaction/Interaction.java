@@ -45,6 +45,16 @@ public abstract class Interaction<T extends VueElement<?>> {
 		this.defenseur = defenseur;
 	}
 	
+	public Interaction(){
+		//
+	}
+	
+	public void instancier(Arene arene, VuePersonnage attaquant, T defenseur) {
+		this.arene = arene;
+		this.attaquant = attaquant;
+		this.defenseur = defenseur;
+	}
+	
 	/**
 	 * Realise l'interaction.
 	 */
