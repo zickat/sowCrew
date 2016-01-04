@@ -41,6 +41,11 @@ public class VuePersonnage extends VueElement<Personnage> implements Comparable<
 	private int tourMort = -1;
 	
 	/**
+	 * Dit si le personnage est visble ou non sur l'ihm
+	 */
+	private boolean visible = true;
+	
+	/**
 	 * Cree une vue du personnage.
 	 * @param adresseIp adresse IP de la console correspondant au personnage
 	 * @param personnage personnage correspondant
@@ -101,6 +106,14 @@ public class VuePersonnage extends VueElement<Personnage> implements Comparable<
 	
 	public int getTourMort() {
 		return tourMort;
+	}
+
+	public boolean isVisible() {
+		return visible;
+	}
+
+	public void setVisible(boolean visible) {
+		this.visible = visible;
 	}
 
 	public void setTourMort(int tourMort) {

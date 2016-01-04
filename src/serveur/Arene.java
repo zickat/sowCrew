@@ -549,7 +549,14 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 
 	@Override
 	public List<VuePersonnage> getPersonnages() throws RemoteException {
-		return new ArrayList<VuePersonnage>(personnages.values());
+		ArrayList<VuePersonnage> temp =  new ArrayList<VuePersonnage>(personnages.values());
+		ArrayList<VuePersonnage> persVisibles = new ArrayList<>();
+		for (VuePersonnage vuePersonnage : temp) {
+			if(vuePersonnage.isVisible()){
+				persVisibles.add(vuePersonnage);
+			}
+		}
+		return persVisibles;
 	}
 
 	@Override
@@ -572,8 +579,8 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 		// personnages
 		for(int refVoisin : personnages.keySet()) {
 			tempPers = personnages.get(refVoisin);
-			
-			if(estVoisin(courant, tempPers)) {
+			VuePersonnage p = (VuePersonnage) vueFromRef(refVoisin);
+			if(estVoisin(courant, tempPers) && p.isVisible()) {
 				res.put(refVoisin, tempPers.getPosition());
 			}
 		}
@@ -795,6 +802,11 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 		}
 		
 		return res;
+	}
+	
+	public void seCamouflerOuDeCamoufler(int refRMI) throws RemoteException{
+		VuePersonnage p = (VuePersonnage)vueFromRef(refRMI);
+		p.setVisible(!p.isVisible());
 	}
 	
 	@Override

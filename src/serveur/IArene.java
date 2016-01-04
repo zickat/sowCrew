@@ -177,6 +177,13 @@ public interface IArene extends Remote {
 	public boolean lanceAttaque(int refRMI, int refAdv) throws RemoteException;
 	
 	/**
+	 * Permet au personnage de changer de mode de camouflage
+	 * @param refRMI la reference du personnage
+	 * @throws RemoteException
+	 */
+	public void seCamouflerOuDeCamoufler(int refRMI) throws RemoteException;
+	
+	/**
 	 * Execute un soin du personnage correspondant a la console donnée
 	 * et l'amis correspondant à la reference RMI donnee
 	 * Le duel echoue si une action a deja ete effectue a ce tour par
