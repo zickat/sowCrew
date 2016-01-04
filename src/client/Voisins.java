@@ -8,7 +8,6 @@ import java.rmi.RemoteException;
 import java.util.HashMap;
 import java.util.Iterator;
 
-
 import serveur.IArene;
 import serveur.element.*;
 import utilitaires.Calculs;
@@ -67,6 +66,9 @@ public class Voisins implements Iterator<Integer>{
 		//Rien a faire
 	}
 
+	/**
+	 * Initialise au debut l'iterator
+	 */
 	public void init(){
 		voisinsTemp = new HashMap<>();
 		voisinsTemp.putAll(voisins);
@@ -79,7 +81,7 @@ public class Voisins implements Iterator<Integer>{
 	 * @throws RemoteException 
 	 */
 	public Integer ennemisLePlusProche(IArene arene) throws RemoteException{
-		init();
+		//init();
 		Integer ref;
 		Element e;
 		while(hasNext()){
@@ -97,17 +99,38 @@ public class Voisins implements Iterator<Integer>{
 	/**
 	 * Donne l'amis le plus proche de notre position, 0 si aucun
 	 * @param arene l'arene dans laquelle on a les voisin
-	 * @return la reference de l'ennemis le plus proche, 0 si aucun
+	 * @return la reference de l'amis le plus proche, 0 si aucun
 	 * @throws RemoteException
 	 */
 	public Integer amisLePlusProche(IArene arene) throws RemoteException{
-		init();
+		//init();
 		Integer ref;
 		Element e;
 		while(hasNext()){
 			ref = next();
 			e = arene.elementFromRef(ref);
 			if(e instanceof Personnage){
+				if(e.getGroupe().equals(p.getGroupe())){
+					return ref;
+				}
+			}
+		}
+		return 0;
+	}
+	
+	/**
+	 * Donne la potion la plus proche de notre position, 0 si aucune
+	 * @param arene l'arene dans laquelle on a les voisin
+	 * @return la reference de la potion la plus proche, 0 si aucune
+	 * @throws RemoteException
+	 */
+	public Integer potionLaPlusProche(IArene arene) throws RemoteException{
+		Integer ref;
+		Element e;
+		while(hasNext()){
+			ref = next();
+			e = arene.elementFromRef(ref);
+			if(e instanceof Potion){
 				if(e.getGroupe().equals(p.getGroupe())){
 					return ref;
 				}
