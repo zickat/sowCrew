@@ -22,3 +22,6 @@ _ Healer : se met au corps avec un allié pour le soigner.
 _ Voleur (locale) : invisible tant qu'il n'a pas engagé le combat
 _ AOE (locale) : c'est dans le nom hehe.
 _ Alchimiste : drop des potions (NE LES RAMASSE PAS)
+_ Warrior : balancé en attaque et vie
+_ Necromancien : quand quelqu'un meurt il fait pop un squelette
+_ Lyche : drrain de vie équivalent à sa force
