@@ -10,10 +10,10 @@ BONUS :
 _ Armure : prends comme dégâts force - armure. L'armure baisse.
 
 POTIONS:
-_ Immortalité : potion qui empêche de descendre la vie en dessous de 1 pv pendant un certain nombre de tours. Si ce personnage tue quelqu'un pendant ce délai il récupère X pv ou X% ed vie.
+_ Immortalité (locale) : potion qui empêche de descendre la vie en dessous de 1 pv pendant un certain nombre de tours. Si ce personnage tue quelqu'un pendant ce délai il récupère X pv ou X% ed vie.
 _ Poison (locale) : perte de pv sur X toujours.
-_ Vie : +100 PV -100 init.
-_ Rage : -30 PV +50 force.
+_ Vie : +100 PV -100 init. (fait)
+_ Rage : -30 PV +50 force. (fait)
 _ Duplication (locale) : division d'un personnage et ses caractéristques en deux
 
 PERSONNAGES:
@@ -25,5 +25,5 @@ _ AOE (locale) : c'est dans le nom hehe.
 _ Alchimiste : drop des potions (NE LES RAMASSE PAS)
 _ Warrior : balancé en attaque et vie
 _ Necromancien : quand quelqu'un meurt il fait pop un squelette
-_ Lyche : drrain de vie équivalent à sa force
+_ Lyche : drain de vie équivalent à sa force
 _ Mentalist (locale) : convertion d'un personnage ennemi en allié 
