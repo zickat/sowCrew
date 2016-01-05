@@ -66,7 +66,7 @@ public class Heal extends StrategiePersonnage {
 				if(distance <= Constantes.DISTANCE_MIN_INTERACTION){
 					arene.setPhrase(refRMI, "Reste avec moi "+autre.getNom());
 					//arene.soigner(refRMI, amis);
-					arene.interagir(refRMI, amis, Soigner.class.getName());
+					arene.interagir(refRMI, amis, Soigner.class);
 				}else{
 					arene.setPhrase(refRMI, "Viens la, mon amis que je te soigne !");
 					arene.deplace(refRMI, amis);

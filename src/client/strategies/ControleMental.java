@@ -10,12 +10,10 @@ import java.util.HashMap;
 import client.StrategiePersonnage;
 import client.Voisins;
 import logger.LoggerProjet;
-import serveur.Arene;
 import serveur.IArene;
 import serveur.element.Element;
 import serveur.element.Personnage;
 import serveur.interaction.Hypnose;
-import serveur.interaction.Interaction;
 import serveur.vuelement.VuePersonnage;
 import utilitaires.Calculs;
 import utilitaires.Constantes;
@@ -75,7 +73,7 @@ public class ControleMental extends StrategiePersonnage {
 						//System.err.println("1");
 						//Interaction<VuePersonnage> i = new Hypnose((Arene) arene, maVue, defenseur);
 						//System.err.println("2");
-						arene.interagir(refRMI, enemis, Hypnose.class.getName());
+						arene.interagir(refRMI, enemis, Hypnose.class);
 						arene.setPhrase(refRMI, "Tu es a moi "+defenseur.getElement().getNom());
 						controleActif = true;
 					}

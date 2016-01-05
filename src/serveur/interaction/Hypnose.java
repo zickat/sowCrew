@@ -3,7 +3,6 @@
  */
 package serveur.interaction;
 
-import serveur.Arene;
 import serveur.vuelement.VuePersonnage;
 
 /**

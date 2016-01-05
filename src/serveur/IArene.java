@@ -9,7 +9,9 @@ import client.controle.IConsole;
 import serveur.element.Element;
 import serveur.element.Personnage;
 import serveur.element.Potion;
+import serveur.interaction.Interaction;
 import serveur.vuelement.VueElement;
+import serveur.vuelement.VuePersonnage;
 
 /**
  * Definit les methodes qui pourront s'appliquer a l'arene par le reseau.
@@ -187,11 +189,11 @@ public interface IArene extends Remote {
 	 * Permet n'importe quelle interaction entre deux personnages
 	 * @param refRMI reference RMI du personnage correspondants a la console
 	 * @param refRMIAdv reference RMI de l'opposant
-	 * @param nomInter nom de la classe faisant l'interaction (extends Interaction)
+	 * @param inter classe faisant l'interaction
 	 * @return vrai si l'action a bien eu lieu, faux sinon
 	 * @throws RemoteException
 	 */
-	public boolean interagir(int refRMI, int refRMIAdv, String nomInter) throws RemoteException;
+	public boolean interagir(int refRMI, int refRMIAdv, Class<? extends Interaction<VuePersonnage>> inter) throws RemoteException;
 	
 	/**
 	 * Deplace le personnage correspondant a la console donne vers l'element 

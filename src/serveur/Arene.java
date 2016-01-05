@@ -25,7 +25,6 @@ import serveur.interaction.Deplacement;
 import serveur.interaction.Duel;
 import serveur.interaction.Interaction;
 import serveur.interaction.Ramassage;
-import serveur.interaction.Soigner;
 import serveur.interaction.Teleportation;
 import serveur.vuelement.VueElement;
 import serveur.vuelement.VuePersonnage;
@@ -805,8 +804,7 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 		return res;
 	}
 	
-	@SuppressWarnings("unchecked")
-	public boolean interagir(int refRMI, int refRMIAdv, String nomInter) throws RemoteException{
+	public boolean interagir(int refRMI, int refRMIAdv, Class<? extends Interaction<VuePersonnage>> inter) throws RemoteException{
 		boolean res = false;
 		
 		VuePersonnage client = personnages.get(refRMI);
@@ -840,12 +838,11 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 							" attaque " + nomRaccourciClient(consoleAdv.getRefRMI()));
 			
 					try {
-						Class<?> c = Class.forName(nomInter);
 						Interaction<VuePersonnage> i = 
-								(Interaction<VuePersonnage>) c.newInstance();
+								(Interaction<VuePersonnage>) inter.newInstance();
 						i.instancier(this, client, clientAdv);
 						i.interagit();
-					} catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+					} catch (InstantiationException | IllegalAccessException e) {
 						e.printStackTrace();
 					}
 					
