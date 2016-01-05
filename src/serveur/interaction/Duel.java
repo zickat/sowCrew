@@ -31,8 +31,20 @@ public class Duel extends Interaction<VuePersonnage> {
 	public void interagit() {
 		try {
 			Personnage pAttaquant = attaquant.getElement();
+			Personnage pDefenseur = defenseur.getElement();
 			int forceAttaquant = pAttaquant.getCaract(Caracteristique.FORCE);
-			int perteVie = forceAttaquant;
+			int defDefenseur = pDefenseur.getCaract(Caracteristique.DEFENSE);
+			
+			/**
+			 * calcul des dégats avec reduction
+			 */
+			double tauxDegatRecu = 1.0-(defDefenseur/100.0);
+			int perteVie = (int) (forceAttaquant*tauxDegatRecu);
+			
+			/**
+			 * Perte de defense
+			 */
+			arene.incrementeCaractElement(defenseur, Caracteristique.DEFENSE, -10);
 		
 			Point positionEjection = positionEjection(defenseur.getPosition(), attaquant.getPosition(), forceAttaquant);
 
@@ -45,6 +57,13 @@ public class Duel extends Interaction<VuePersonnage> {
 				
 				logs(Level.INFO, Constantes.nomRaccourciClient(attaquant) + " colle une beigne ("
 						+ perteVie + " points de degats) a " + Constantes.nomRaccourciClient(defenseur));
+			}
+			
+			/**
+			 * Regain de vie si l'on tue le defenseur
+			 */
+			if (pDefenseur.getCaract(Caracteristique.VIE) <= 0){
+				arene.incrementeCaractElement(attaquant, Caracteristique.VIE, 10);
 			}
 			
 			// initiative
