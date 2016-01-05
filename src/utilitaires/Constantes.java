@@ -87,7 +87,7 @@ public class Constantes {
 	public static final int MINIMUM_ARENE = 50;
 	
 	/**
-	 * Intervalle de réduction
+	 * Intervalle de reduction
 	 */
 	public static final int INTERVALLE_OFFSET = 120000;
 	

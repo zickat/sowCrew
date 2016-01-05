@@ -79,7 +79,7 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 	
 	/**
 	 * Liste des personnages morts. Permet de garder une trace des personnages
-	 * qui ont joué et qui sont maintenant deconnectes. 
+	 * qui ont joue et qui sont maintenant deconnectes. 
 	 */
 	protected List<VuePersonnage> personnagesMorts = null;
 
@@ -152,7 +152,7 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 		// ordonnees par leur initiative
 		List<Integer> listRef;
 		
-		// repérere le début de la partie dans le temps
+		// reperere le debut de la partie dans le temps
 		long derniereReduction = System.currentTimeMillis();
 		
 		while(!partieFinie) {
@@ -213,13 +213,13 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 			tour++;
 			verifierPartieFinie();
 			
-			// vérifier que le temps a dépassé 2 min.
+			// verifier que le temps a depasse 2 min.
 			long tempsDepuisReduction = System.currentTimeMillis() - derniereReduction;
 			if (tempsDepuisReduction >= Constantes.INTERVALLE_OFFSET)
 			{
-				// réinit. le timer
+				// reinit le timer
 				derniereReduction = System.currentTimeMillis();
-				logger.info("2 min dépassé");
+				logger.info("2 min depasse");
 				reduireArene();
 				verifPersoBornes(personnages);
 			}
@@ -1119,7 +1119,7 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 
 
 	/**
-	 * Réduit la taille de la zone jouable.
+	 * Reduit la taille de la zone jouable.
 	 */
 	public void reduireArene() {
 		if (this.getOffset() * 2 < Constantes.MINIMUM_ARENE)
@@ -1134,7 +1134,7 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 	}
 	
 	/**
-	 * Vérfier que tous les persos sont dans les bornes et bouger sinon
+	 * Verfier que tous les persos sont dans les bornes et bouger sinon
 	 */
 	private void verifPersoBornes(Hashtable<Integer, VuePersonnage> lsperso)
 	{
@@ -1144,7 +1144,7 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 			boolean ok = verifDansBorne(perso.getPosition());
 			if (! ok)
 			{
-				// décaler le personnage sur la position la plus proche dans l'arène
+				// decaler le personnage sur la position la plus proche dans l'arene
 				Point newpos = new Point (perso.getPosition());
 				if (newpos.x > Constantes.XMAX_ARENE - getOffset())
 					newpos.x =  Constantes.XMAX_ARENE - getOffset();
@@ -1164,7 +1164,7 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 	}
 	
 	/**
-	 * Vérifie UN personnage
+	 * Verifie UN personnage
 	 */
 	private boolean verifDansBorne(Point p)
 	{

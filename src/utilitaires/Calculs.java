@@ -17,7 +17,7 @@ import serveur.element.Caracteristique;
 public class Calculs {
 	
 	/**
-	 * Offset pour retrouver l'arène init.
+	 * Offset pour retrouver l'arene init.
 	 */
 	public static int OFFSET_ARENE = 0;
 	
