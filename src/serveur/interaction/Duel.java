@@ -67,6 +67,9 @@ public class Duel extends Interaction<VuePersonnage> {
 			if (pDefenseur.getCaract(Caracteristique.VIE) <= 0 && !(pDefenseur instanceof Monstre) && !(pAttaquant instanceof Monstre)){
 				arene.incrementeCaractElement(attaquant, Caracteristique.VIE, 10);
 			}
+			if (pDefenseur.getCaract(Caracteristique.VIE) <= 0 && (pDefenseur instanceof Monstre) && !(pAttaquant instanceof Monstre)){
+				arene.incrementeCaractElement(attaquant, Caracteristique.FORCE, 10);
+			}
 			
 			// initiative
 			incrementeInitiative(defenseur);
