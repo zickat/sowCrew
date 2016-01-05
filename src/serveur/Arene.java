@@ -829,7 +829,7 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 							" analyse " + nomRaccourciClient(consoleAdv.getRefRMI()));
 			
 					res= new Clairvoyance(this, client, clientAdv).clair();
-					personnages.get(refRMI).executeAction();
+					personnages.get(refRMI).executeClairvoyance();
 					
 						setPhrase(refRMI, "J'ai analysé " + nomRaccourciClient(consoleAdv.getRefRMI()));
 						console.log(Level.INFO, Constantes.nomClasse(this), 
