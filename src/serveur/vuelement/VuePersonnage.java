@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Point;
 
 import serveur.element.Personnage;
+import utilitaires.Action;
 import utilitaires.Constantes;
 
 /**
@@ -19,9 +20,14 @@ public class VuePersonnage extends VueElement<Personnage> implements Comparable<
 	private String adresseIp = Constantes.IP_DEFAUT;
 	
 	/**
-	 * Vrai si ce personnage a execute une action ce tour-ci.
+	 * Dernière action executée à ce tour-ci.
 	 */
-	private boolean actionExecutee;
+	private Action actionExecutee;
+	
+	/**
+	 * Nombre d'action éxecutée a ce tour-ci
+	 */
+	private int nbAction;
 	
 	/**
 	 * Nombre de tours que ce client peut passer sur l'arene.
@@ -54,15 +60,38 @@ public class VuePersonnage extends VueElement<Personnage> implements Comparable<
 		
 		super(personnage, position, ref);
 		this.adresseIp = adresseIp;
-		this.actionExecutee = false;
+		this.actionExecutee = Action.AUCUNE;
+		this.nbAction = 0;
 		this.NB_TOURS = nbTours;
 	}
 	
 	/**
 	 * Note que ce personnage a deja execute une action a ce tour.
 	 */
-	public void executeAction() {
-		actionExecutee = true;
+	
+	public void executeRammassage() {
+		actionExecutee = Action.RAMASSAGE;
+		nbAction++;
+	}
+	
+	public void executeDeplacer() {
+		actionExecutee = Action.DEPLACER;
+		nbAction++;
+	}
+	
+	public void executeAttaquer() {
+		actionExecutee = Action.ATTAQUER;
+		nbAction++;
+	}
+	
+	public void executeSoin() {
+		actionExecutee = Action.SOIN;
+		nbAction++;
+	}
+	
+	public void executeClairvoyance() {
+		actionExecutee = Action.CLAIRVOYANCE;
+		nbAction++;
 	}
 
 	/**
@@ -70,7 +99,8 @@ public class VuePersonnage extends VueElement<Personnage> implements Comparable<
 	 * et note qu'aucune action n'a ete executee. 
 	 */
 	public void termineTour() {
-		actionExecutee = false;
+		actionExecutee = Action.AUCUNE;
+		nbAction=0;
 		tour++;
 	}
 	
@@ -96,7 +126,15 @@ public class VuePersonnage extends VueElement<Personnage> implements Comparable<
 	}
 
 	public boolean isActionExecutee() {
-		return actionExecutee;
+		return nbAction != 0;
+	}
+	
+	public boolean secondeActionPossible(){
+		return nbAction < 2;
+	}
+	
+	public boolean isActionExecutee(Action ac) {
+		return actionExecutee == ac;
 	}
 	
 	public int getTourMort() {
