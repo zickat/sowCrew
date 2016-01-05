@@ -4,6 +4,8 @@ import java.awt.Point;
 import java.rmi.RemoteException;
 import java.rmi.UnmarshalException;
 import java.util.Enumeration;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import client.controle.IConsole;
@@ -22,7 +24,8 @@ import utilitaires.Constantes;
  *
  */
 public class AreneTournoi extends Arene {
-
+	private static List<Point> lstCoord = new ArrayList<>();;
+	private int numeroPersonnage = 0;
 	private static final long serialVersionUID = 1L;
 	
 	private String[] groupes = new String[30]; // contient le nom de chaque groupe présent dans l'arène
@@ -56,7 +59,7 @@ public class AreneTournoi extends Arene {
 			motDePasse = sc.nextLine();
 			sc.close();
 		}
-		
+		initList(10);
 		partieCommencee = false;
 	}
 	
@@ -93,14 +96,24 @@ public class AreneTournoi extends Arene {
 		}
 		groupes[nombreGroupes++] = personnage.getGroupe();
 		
-		if(partieCommencee) {
+		if(numeroPersonnage < 10){
+			if(partieCommencee) {
+				// refus si la partie a commence
+				res = false;
+				
+				logger.info(Constantes.nomClasse(this), 
+						"Demande de connexion refusee (partie deja commencee) (" + adr + ")");
+			} else {
+				position = lstCoord.get(numeroPersonnage);
+				numeroPersonnage += 1;
+				res = super.connecte(refRMI, ipConsole, personnage, nbTours, position);
+			}
+		}else{
 			// refus si la partie a commence
 			res = false;
 			
 			logger.info(Constantes.nomClasse(this), 
-					"Demande de connexion refusee (partie deja commencee) (" + adr + ")");
-		} else {
-			res = super.connecte(refRMI, ipConsole, personnage, nbTours, position);
+					"Demande de connexion refusee (nombre de jouers = 10) (" + adr + ")");
 		}
 		
 		return res;
@@ -201,6 +214,18 @@ public class AreneTournoi extends Arene {
 		
 		return msg;
 	}
-	
 
+	public void initList(int points){
+		int x = 50;
+		int y = 50;
+		int radius = 40;
+		double slice = 2 * Math.PI / points;
+	    for (int i = 0; i < points; i++)
+	    {
+	        double angle = slice * i;
+	        int newX = (int)(x + radius * Math.cos(angle));
+	        int newY = (int)(y + radius * Math.sin(angle));
+	        lstCoord.add(new Point(newX, newY));
+	    }
+	}
 }
