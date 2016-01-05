@@ -628,26 +628,9 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 	 */
 	private List<VuePersonnage> getPersonnagesClassement() {
 		PriorityQueue<VuePersonnage> classement = new PriorityQueue<VuePersonnage>();
-		List<VuePersonnage> tmp = new ArrayList<>();
-		Personnage p;
-		int i ;
 		
-		// recuperation des personnages en vie
-		for(VuePersonnage vuePers : personnages.values()) {
-			for(i = 0; i<tmp.size();i++){
-				p = tmp.get(i).getElement();
-				if(vuePers.getElement().getDegatTotal() > p.getDegatTotal() ){
-					tmp.add(i, vuePers);
-					break;
-				}
-			}
-			if(i==tmp.size())
-				tmp.add(vuePers);
-		}
-		
-		for(VuePersonnage vue : tmp){
+		for(VuePersonnage vue : this.personnages.values()){
 			classement.offer(vue);
-			System.out.println("DEGAT de "+ vue.getElement().getGroupe() + " : "+vue.getElement().getDegatTotal());
 		}
 		
 		// recuperation des personnages elimines

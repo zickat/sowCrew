@@ -117,7 +117,12 @@ public class VuePersonnage extends VueElement<Personnage> implements Comparable<
 		if(e1.estVivant()) {
 			if(e2.estVivant()) {
 				// tous les deux vivants : reference RMI
-				res = vp2.getRefRMI() - this.getRefRMI();
+				if(e1.getDegatTotal() > e2.getDegatTotal())
+					res = 1;
+				else if(e1.getDegatTotal() < e2.getDegatTotal())
+					res = -1;
+				else
+					res = 0;
 			} else {
 				// vivant avant mort
 				res = -1;
