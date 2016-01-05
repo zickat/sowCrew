@@ -354,11 +354,10 @@ public class AreneJPanel extends JPanel {
 	 * @param personnages liste des personnages a afficher
 	 * @param potions liste des potions a afficher
 	 */
-	// public void setVues(List<VuePersonnage> personnages, List<VuePotion> potions, int offset) {
-	public void setVues(List<VuePersonnage> personnages, List<VuePotion> potions) {
+	public void setVues(List<VuePersonnage> personnages, List<VuePotion> potions, int offset) {
 		this.potions = potions;
 		this.personnages = personnages;
-		this.offset = 25;
+		this.offset = offset;
 	}
 
 	/**

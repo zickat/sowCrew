@@ -19,7 +19,7 @@ public class Calculs {
 	/**
 	 * Offset pour retrouver l'arène init.
 	 */
-	public static int OFFSET_ARENE = 25;
+	public static int OFFSET_ARENE = 0;
 	
 	public static int getOffset() {return OFFSET_ARENE;}
 	public static void setOffset(int val) {OFFSET_ARENE = val;}
