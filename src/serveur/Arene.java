@@ -8,6 +8,7 @@ import java.rmi.RemoteException;
 import java.rmi.UnmarshalException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
@@ -627,7 +628,8 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 	 * @return liste des personnages ordonnes pour le classement final
 	 */
 	private List<VuePersonnage> getPersonnagesClassement() {
-		PriorityQueue<VuePersonnage> classement = new PriorityQueue<VuePersonnage>();
+		/*PriorityQueue<VuePersonnage> classement = new PriorityQueue<VuePersonnage>();
+		
 		
 		for(VuePersonnage vue : this.personnages.values()){
 			classement.offer(vue);
@@ -636,7 +638,22 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 		// recuperation des personnages elimines
 		for(VuePersonnage vuePers : personnagesMorts) {
 			classement.offer(vuePers);
+		}*/
+		
+		List<VuePersonnage> classement = new ArrayList<>();
+		
+		for(VuePersonnage vue : this.personnages.values()){
+			classement.add(vue);
 		}
+		
+		for(VuePersonnage vuePers : personnagesMorts) {
+			classement.add(vuePers);
+		}
+		
+		classement.sort(new ComparatorVuePersonnage());
+		
+		for(VuePersonnage vue : classement)
+			System.out.println("DEGAT"+vue.getElement().getDegatTotal());
 		
 		// retour sous forme de liste pour les futures utilisations
 		return new ArrayList<VuePersonnage>(classement); 
@@ -985,5 +1002,39 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 	@Override
 	public void lancePotion(Potion potion, Point position, String motDePasse) throws RemoteException {}
 
-	
+	public class ComparatorVuePersonnage implements Comparator<VuePersonnage> {
+
+		@Override
+		public int compare(VuePersonnage o1, VuePersonnage o2) {
+			
+			int res;
+			
+			Personnage e1 = o1.getElement();
+			Personnage e2 = o2.getElement();
+			
+			if(e1.estVivant()) {
+				if(e2.estVivant()) {
+					// tous les deux vivants : reference RMI
+					
+					if(e1.getDegatTotal() <= e2.getDegatTotal())
+						res = 1;
+					else
+						res = -1;
+				} else {
+					// vivant avant mort
+					res = -1;
+				}
+			} else {
+				if(e2.estVivant()) {
+					// vivant avant mort
+					res = 1;
+				} else {
+					// tous les deux morts : celui mort le plus tard avant
+					res = o2.getTourMort() - o1.getTourMort();
+				}
+			}
+			return res;
+		}
+
+	}
 }
