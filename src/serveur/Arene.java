@@ -207,7 +207,7 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 			
 			// vérifier que le temps a dépassé 2 min.
 			long tempsDepuisReduction = System.currentTimeMillis() - derniereReduction;
-			if (tempsDepuisReduction >= 5000)
+			if (tempsDepuisReduction >= Constantes.INTERVALLE_OFFSET)
 			{
 				// réinit. le timer
 				derniereReduction = System.currentTimeMillis();
@@ -1006,7 +1006,7 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 	 * Réduit la taille de la zone jouable.
 	 */
 	public void reduireArene() {
-		if (this.getOffset() * 2 < 50)
+		if (this.getOffset() * 2 < Constantes.MINIMUM_ARENE)
 		{
 		 	Calculs.setOffset(Calculs.getOffset() + 5);
 		}
