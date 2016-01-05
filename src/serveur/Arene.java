@@ -745,6 +745,7 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 			// on teste la distance entre le personnage et la potion
 			if (distance <= Constantes.DISTANCE_MIN_INTERACTION) {
 				new Ramassage(this, vuePersonnage, vuePotion).interagit();
+				//Teleportation du personnage
 				personnages.get(refRMI).setPosition(Calculs.positionAleatoireArene());
 				personnages.get(refRMI).executeAction();
 				

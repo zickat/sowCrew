@@ -7,6 +7,7 @@ import logger.LoggerProjet;
 import serveur.IArene;
 import serveur.element.Caracteristique;
 import serveur.element.Potion;
+import serveur.element.PotionTP;
 import utilitaires.Calculs;
 import utilitaires.Constantes;
 
@@ -15,7 +16,7 @@ public class LancePotionTP {
 	private static String usage = "USAGE : java " + LancePotionTP.class.getName() + " [ port [ ipArene ] ]";
 
 	public static void main(String[] args) {
-		String nom = "Anduril";
+		String nom = "Diablo potion";
 		
 		// TODO remplacer la ligne suivante par votre numero de groupe
 		String groupe = "G" + Calculs.nombreAleatoire(0,99); 
@@ -68,7 +69,7 @@ public class LancePotionTP {
 			caractsPotion.put(Caracteristique.DEFENSE, 0);
 			
 			// ajout de la potion
-			arene.ajoutePotion(new Potion(nom, groupe, caractsPotion), Calculs.positionAleatoireArene());
+			arene.ajoutePotion(new PotionTP(nom, groupe, caractsPotion), Calculs.positionAleatoireArene());
 			logger.info("Lanceur", "Lancement de la potion TP reussi");
 			
 		} catch (Exception e) {

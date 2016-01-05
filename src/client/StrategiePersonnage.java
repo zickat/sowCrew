@@ -96,15 +96,17 @@ public class StrategiePersonnage {
 				// j'interagis directement
 				if(elemPlusProche instanceof Potion) { // potion
 					// ramassage
-					console.setPhrase("Je ramasse une potion");
-					arene.ramassePotion(refRMI, refCible);
-
-				}else if(elemPlusProche instanceof PotionTP){
-					
-					console.setPhrase("Oh! Je  me teleporte!!!");
-					
-					
-				}else { // personnage
+					if(elemPlusProche instanceof PotionTP){//potion TP
+						
+						console.setPhrase("Oh! Je  me teleporte!!!");
+						arene.ramassePotionTP(refRMI, refCible);
+						
+					}else{
+						
+						console.setPhrase("Je ramasse une potion");
+						arene.ramassePotion(refRMI, refCible);
+					}
+				} else { // personnage
 					// duel
 					console.setPhrase("Je fais un duel avec " + elemPlusProche.getNom());
 					arene.lanceAttaque(refRMI, refCible);
