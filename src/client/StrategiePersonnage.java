@@ -96,19 +96,20 @@ public class StrategiePersonnage {
 				if(arene.estPotionFromRef(refCible)){ // potion
 					// ramassage
 					console.setPhrase("Je ramasse une potion");
-					arene.ramassePotion(refRMI, refCible);
-						
-					
+
+					arene.ramassePotion(refRMI, refCible);			
 				} else { // personnage
 					// duel
 					console.setPhrase("Je fais un duel avec " + elemPlusProche);
 					arene.lanceAttaque(refRMI, refCible);
+					arene.deplace(refRMI, refCible);
 				}
 				
 			} else { // si voisins, mais plus eloignes
 				// je vais vers le plus proche
 				console.setPhrase("Je vais vers mon voisin " + elemPlusProche);
 				arene.deplace(refRMI, refCible);
+				arene.lanceAttaque(refRMI, refCible);
 			}
 		}
 	}
