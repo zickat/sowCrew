@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.logging.Level;
+import java.util.Map.Entry;
 
 import client.controle.IConsole;
 import logger.LoggerProjet;
@@ -213,6 +214,7 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 				derniereReduction = System.currentTimeMillis();
 				logger.info("2 min dépassé");
 				reduireArene();
+				verifPersoBornes(personnages);
 			}
 			
 			try {
@@ -1015,5 +1017,31 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 	@Override
 	public int getOffset () {
 		return Calculs.getOffset();
+	}
+	
+	/**
+	 * Vérfier que tous les persos sont dans les bornes et bouger sinon
+	 */
+	private void verifPersoBornes(Hashtable<Integer, VuePersonnage> lsperso)
+	{
+		for (Entry<Integer, VuePersonnage> entry : lsperso.entrySet())
+		{
+			VuePersonnage perso = entry.getValue();
+			boolean ok = verifDansBorne(perso.getPosition());
+			if (! ok)
+				perso.setPosition(Calculs.positionAleatoireArene());
+		}
+	}
+	
+	/**
+	 * Vérifie UN personnage
+	 */
+	private boolean verifDansBorne(Point p)
+	{
+		return
+			(p.x > Constantes.XMIN_ARENE + getOffset()) &&
+			(p.x > Constantes.XMAX_ARENE - getOffset()) &&
+			(p.y < Constantes.YMIN_ARENE + getOffset()) &&
+			(p.y > Constantes.YMAX_ARENE - getOffset());
 	}
 }
