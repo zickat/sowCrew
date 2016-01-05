@@ -75,7 +75,7 @@ public class AreneJPanel extends JPanel {
 	private boolean compteARebours = false;
 	
 	/**
-	 * Offset pour dessiner le carré
+	 * Offset pour dessiner le carre
 	 */
 	private int offset;
 

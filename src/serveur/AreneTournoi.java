@@ -24,7 +24,7 @@ import utilitaires.Constantes;
  *
  */
 public class AreneTournoi extends Arene {
-	private static List<Point> lstCoord = new ArrayList<>();;
+	private static List<Point> lstCoord = new ArrayList<Point>();
 	private int numeroPersonnage = 0;
 	private static final long serialVersionUID = 1L;
 	
@@ -40,8 +40,8 @@ public class AreneTournoi extends Arene {
 	private boolean partieCommencee;
 
 	
-	private String[] groupes = new String[30]; // contient le nom de chaque groupe présent dans l'arène
-	private int nombreGroupes = 0; // Nombre de groupes dans l'arène
+	private String[] groupes = new String[30]; // contient le nom de chaque groupe present dans l'arene
+	private int nombreGroupes = 0; // Nombre de groupes dans l'arene
 	
 	/**
 	 * Constructeur de l'arene de tournoi.
@@ -90,7 +90,7 @@ public class AreneTournoi extends Arene {
 		int portConsole = port + refRMI;
 		String adr = Constantes.nomRMI(ipConsole, portConsole, "Console" + refRMI);
 		
-		for (int i = 0; i < nombreGroupes; i++) { // Verification que le personnage ne fait pas parti d'un groupe déjà présent
+		for (int i = 0; i < nombreGroupes; i++) { // Verification que le personnage ne fait pas parti d'un groupe deja present
 			if (personnage.getGroupe().equals(groupes[i])) {
 				logger.info(Constantes.nomClasse(this), 
 						"Demande de connexion refusee (groupe deja present)");
@@ -99,14 +99,14 @@ public class AreneTournoi extends Arene {
 		}
 		groupes[nombreGroupes++] = personnage.getGroupe();
 		
-		// Verification des caractéristiques de chaque personnages
+		// Verification des caracteristiques de chaque personnages
 		if((personnage.getCaract(Caracteristique.FORCE) != 30 || personnage.getCaract(Caracteristique.VIE) != 100 
 				|| personnage.getCaract(Caracteristique.INITIATIVE) != 100 || personnage.getCaract(Caracteristique.DEFENSE) != 50)
 				&& !(personnage instanceof Monstre)){
 			// refus si la partie a commence
 			res = false;
 			
-			logger.info(Constantes.nomClasse(this),"Demande de connexion refusee (Caractéristiques) (" + adr + ")");
+			logger.info(Constantes.nomClasse(this),"Demande de connexion refusee (Caracteristiques) (" + adr + ")");
 			
 			
 

@@ -8,6 +8,7 @@ import java.rmi.RemoteException;
 import java.rmi.UnmarshalException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Hashtable;
@@ -78,7 +79,7 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 	
 	/**
 	 * Liste des personnages morts. Permet de garder une trace des personnages
-	 * qui ont joué et qui sont maintenant deconnectes. 
+	 * qui ont joue et qui sont maintenant deconnectes. 
 	 */
 	protected List<VuePersonnage> personnagesMorts = null;
 
@@ -151,7 +152,7 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 		// ordonnees par leur initiative
 		List<Integer> listRef;
 		
-		// repérere le début de la partie dans le temps
+		// reperere le debut de la partie dans le temps
 		long derniereReduction = System.currentTimeMillis();
 		
 		while(!partieFinie) {
@@ -212,13 +213,13 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 			tour++;
 			verifierPartieFinie();
 			
-			// vérifier que le temps a dépassé 2 min.
+			// verifier que le temps a depasse 2 min.
 			long tempsDepuisReduction = System.currentTimeMillis() - derniereReduction;
 			if (tempsDepuisReduction >= Constantes.INTERVALLE_OFFSET)
 			{
-				// réinit. le timer
+				// reinit le timer
 				derniereReduction = System.currentTimeMillis();
-				logger.info("2 min dépassé");
+				logger.info("2 min depasse");
 				reduireArene();
 			}
 			verifPersoBornes(personnages);
@@ -659,9 +660,9 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 			classement.offer(vuePers);
 		}*/
 		
-		List<VuePersonnage> classement = new ArrayList<>();
+		List<VuePersonnage> classement = new ArrayList<VuePersonnage>();
 		
-		for(VuePersonnage vue : this.personnages.values()){
+		for(VuePersonnage vue : this.personnages.values()) {
 			classement.add(vue);
 		}
 		
@@ -669,10 +670,12 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 			classement.add(vuePers);
 		}
 		
-		classement.sort(new ComparatorVuePersonnage());
+		Collections.sort(classement, new ComparatorVuePersonnage());
 		
+		/*
 		for(VuePersonnage vue : classement)
 			System.out.println("DEGAT"+vue.getElement().getDegatTotal());
+		*/
 		
 		// retour sous forme de liste pour les futures utilisations
 		return new ArrayList<VuePersonnage>(classement); 
@@ -872,9 +875,9 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 					res= new Clairvoyance(this, client, clientAdv).clair();
 					personnages.get(refRMI).executeClairvoyance();
 					
-						setPhrase(refRMI, "J'ai analys� " + nomRaccourciClient(consoleAdv.getRefRMI()));
+						setPhrase(refRMI, "J'ai analyse " + nomRaccourciClient(consoleAdv.getRefRMI()));
 						console.log(Level.INFO, Constantes.nomClasse(this), 
-								"J'ai analys� " + nomRaccourciClient(refRMI));
+								"J'ai analyse " + nomRaccourciClient(refRMI));
 					
 					return res;
 				} else {
@@ -1086,7 +1089,7 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 			// si une action a deja ete executee
 			logActionDejaExecutee(refRMI);			
 		} else {
-			//On garde le formalisme des int�ractions pour des possibles updates
+			//On garde le formalisme des interactions pour des possibles updates
 			new Soin(this, client, client).interagit();
 			res = true;
 		}
@@ -1097,7 +1100,7 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 
 
 	/**
-	 * Réduit la taille de la zone jouable.
+	 * Reduit la taille de la zone jouable.
 	 */
 	public void reduireArene() {
 		if (this.getOffset() * 2 < Constantes.MINIMUM_ARENE)
@@ -1112,7 +1115,7 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 	}
 	
 	/**
-	 * Vérfier que tous les persos sont dans les bornes et bouger sinon
+	 * Verfier que tous les persos sont dans les bornes et bouger sinon
 	 */
 	private void verifPersoBornes(Hashtable<Integer, VuePersonnage> lsperso)
 	{
@@ -1143,7 +1146,7 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 	}
 	
 	/**
-	 * Vérifie UN personnage
+	 * Verifie UN personnage
 	 */
 	private boolean verifDansBorne(Point p)
 	{
