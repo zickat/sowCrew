@@ -220,8 +220,8 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 				derniereReduction = System.currentTimeMillis();
 				logger.info("2 min dépassé");
 				reduireArene();
-				verifPersoBornes(personnages);
 			}
+			verifPersoBornes(personnages);
 			
 			try {
 				long dureeTour = System.currentTimeMillis() - begin;
@@ -1095,25 +1095,6 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 	}
 
 
-	/**************************************************************************
-	 * Specifique a l'arene tournoi.
-	 **************************************************************************/
-
-	@Override
-	public boolean verifieMotDePasse(char[] motDePasse) throws RemoteException {
-		return false;
-	}
-	
-	@Override
-	public void commencePartie(String motDePasse) throws RemoteException {}
-
-	@Override
-	public void ejectePersonnage(int refRMI, String motDePasse) throws RemoteException {}
-
-	@Override
-	public void lancePotion(Potion potion, Point position, String motDePasse) throws RemoteException {}
-
-
 
 	/**
 	 * Réduit la taille de la zone jouable.
@@ -1142,18 +1123,19 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 			if (! ok)
 			{
 				// décaler le personnage sur la position la plus proche dans l'arène
-				Point newpos = new Point (perso.getPosition());
+				Point newpos = perso.getPosition();
+				
 				if (newpos.x > Constantes.XMAX_ARENE - getOffset())
-					newpos.x =  Constantes.XMAX_ARENE - getOffset();
+					newpos.x =  Constantes.XMAX_ARENE - getOffset() -1;
 				
 				if (newpos.x < getOffset())
-					newpos.x = getOffset();
+					newpos.x = getOffset() + 1;
 				
 				if (newpos.y > Constantes.YMAX_ARENE - getOffset())
-					newpos.y = Constantes.YMAX_ARENE - getOffset();
+					newpos.y = Constantes.YMAX_ARENE - getOffset() - 1;
 				
 				if (newpos.y < getOffset())
-					newpos.y = getOffset();
+					newpos.y = getOffset() + 1;
 				
 				perso.setPosition(newpos);
 			}
@@ -1167,10 +1149,30 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 	{
 		return
 			(p.x > Constantes.XMIN_ARENE + getOffset()) &&
-			(p.x > Constantes.XMAX_ARENE - getOffset()) &&
-			(p.y < Constantes.YMIN_ARENE + getOffset()) &&
-			(p.y > Constantes.YMAX_ARENE - getOffset());
+			(p.x < Constantes.XMAX_ARENE - getOffset()) &&
+			(p.y > Constantes.YMIN_ARENE + getOffset()) &&
+			(p.y < Constantes.YMAX_ARENE - getOffset());
 	}
+
+
+
+	/**************************************************************************
+	 * Specifique a l'arene tournoi.
+	 **************************************************************************/
+
+	@Override
+	public boolean verifieMotDePasse(char[] motDePasse) throws RemoteException {
+		return false;
+	}
+	
+	@Override
+	public void commencePartie(String motDePasse) throws RemoteException {}
+
+	@Override
+	public void ejectePersonnage(int refRMI, String motDePasse) throws RemoteException {}
+
+	@Override
+	public void lancePotion(Potion potion, Point position, String motDePasse) throws RemoteException {}
 
 	public class ComparatorVuePersonnage implements Comparator<VuePersonnage> {
 
