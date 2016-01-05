@@ -24,6 +24,7 @@ import serveur.element.Potion;
 import serveur.interaction.Deplacement;
 import serveur.interaction.Duel;
 import serveur.interaction.Ramassage;
+import serveur.interaction.Soin;
 import serveur.vuelement.VueElement;
 import serveur.vuelement.VuePersonnage;
 import serveur.vuelement.VuePotion;
@@ -965,7 +966,22 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 	}
 
 	
-	
+	public boolean lanceAutoSoin(int refRMI) throws RemoteException{
+		boolean res = false;
+		
+		VuePersonnage client = personnages.get(refRMI);
+		
+		if (personnages.get(refRMI).isActionExecutee()) {
+			// si une action a deja ete executee
+			logActionDejaExecutee(refRMI);			
+		} else {
+			//On garde le formalisme des intéractions pour des possibles updates
+			new Soin(this, client, client).interagit();
+			res = true;
+		}
+
+		return res;
+	}
 
 
 	/**************************************************************************
