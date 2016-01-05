@@ -2,7 +2,6 @@ package serveur.interaction;
 
 import java.rmi.RemoteException;
 
-import serveur.Arene;
 import serveur.element.Caracteristique;
 import serveur.element.Personnage;
 import serveur.vuelement.VuePersonnage;

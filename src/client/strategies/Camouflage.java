@@ -11,7 +11,6 @@ import client.StrategiePersonnage;
 import client.Voisins;
 import logger.LoggerProjet;
 import serveur.IArene;
-import serveur.element.Caracteristique;
 import serveur.element.Personnage;
 import serveur.vuelement.VuePersonnage;
 import utilitaires.Calculs;
