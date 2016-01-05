@@ -1,5 +1,11 @@
 package serveur;
 
+import static utilitaires.Constantes.OFFSET_ARENE;
+import static utilitaires.Constantes.XMAX_ARENE;
+import static utilitaires.Constantes.XMIN_ARENE;
+import static utilitaires.Constantes.YMAX_ARENE;
+import static utilitaires.Constantes.YMIN_ARENE;
+
 import java.awt.Point;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
@@ -143,6 +149,9 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 		// ordonnees par leur initiative
 		List<Integer> listRef;
 		
+		// repérere le début de la partie dans le temps
+		long derniereReduction = System.currentTimeMillis();
+		
 		while(!partieFinie) {
 			// moment de debut du tour
 			long begin = System.currentTimeMillis();
@@ -200,6 +209,16 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 			
 			tour++;
 			verifierPartieFinie();
+			
+			// vérifier que le temps a dépassé 2 min.
+			long tempsDepuisReduction = System.currentTimeMillis() - derniereReduction;
+			if (tempsDepuisReduction >= 10000)
+			{
+				// réinit. le timer
+				derniereReduction = System.currentTimeMillis();
+				logger.info("2 min dépassé");
+				reduireArene();
+			}
 			
 			try {
 				long dureeTour = System.currentTimeMillis() - begin;
@@ -986,5 +1005,21 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 	@Override
 	public void lancePotion(Potion potion, Point position, String motDePasse) throws RemoteException {}
 
+
+
+	/**
+	 * Réduit la taille de la zone jouable.
+	 */
+	public static void reduireArene() {
+		if ((XMAX_ARENE - XMIN_ARENE - 10) > 50) // TODO mettre une vraie variable (MINIMUM_ARENE)
+		{
+			XMIN_ARENE += 5;
+			XMAX_ARENE -= 5;
 	
+			YMIN_ARENE += 5;
+			YMAX_ARENE -= 5;
+			
+			OFFSET_ARENE += 5;
+		}
+	}
 }
