@@ -1029,7 +1029,23 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 			VuePersonnage perso = entry.getValue();
 			boolean ok = verifDansBorne(perso.getPosition());
 			if (! ok)
-				perso.setPosition(Calculs.positionAleatoireArene());
+			{
+				// décaler le personnage sur la position la plus proche dans l'arène
+				Point newpos = new Point (perso.getPosition());
+				if (newpos.x > Constantes.XMAX_ARENE - getOffset())
+					newpos.x =  Constantes.XMAX_ARENE - getOffset();
+				
+				if (newpos.x < getOffset())
+					newpos.x = getOffset();
+				
+				if (newpos.y > Constantes.YMAX_ARENE - getOffset())
+					newpos.y = Constantes.YMAX_ARENE - getOffset();
+				
+				if (newpos.y < getOffset())
+					newpos.y = getOffset();
+				
+				perso.setPosition(newpos);
+			}
 		}
 	}
 	
