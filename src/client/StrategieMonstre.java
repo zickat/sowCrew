@@ -18,7 +18,7 @@ public class StrategieMonstre extends StrategiePersonnage {
     public StrategieMonstre(String ipArene, int port, String ipConsole,
                             int nbTours, Point position, LoggerProjet logger) {
 
-        super(ipArene, port, ipConsole, null, null, null, nbTours, position, logger);
+    	super(logger);
 
         try {
             console = new Console(ipArene, port, ipConsole, this,
@@ -52,7 +52,7 @@ public class StrategieMonstre extends StrategiePersonnage {
         }
 
         if (refCible == 0) { // je n'ai pas de voisins, j'erre
-            console.setPhrase("*En quête d'une proie*");
+            console.setPhrase("*En quete d'une proie*");
             arene.deplace(refRMI, 0);
         } else {
             int distPlusProche = Calculs.distanceChebyshev(position, arene.getPosition(refCible));
