@@ -58,6 +58,8 @@ public class Duel extends Interaction<VuePersonnage> {
 				
 				logs(Level.INFO, Constantes.nomRaccourciClient(attaquant) + " colle une beigne ("
 						+ perteVie + " points de degats) a " + Constantes.nomRaccourciClient(defenseur));
+				Personnage at = attaquant.getElement();
+				at.setDegatTotal(at.getDegatTotal()+perteVie);
 			}
 			
 			/**
