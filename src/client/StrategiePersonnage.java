@@ -12,6 +12,7 @@ import serveur.element.Caracteristique;
 import serveur.element.Element;
 import serveur.element.Personnage;
 import serveur.element.Potion;
+import serveur.element.PotionTP;
 import utilitaires.Calculs;
 import utilitaires.Constantes;
 
@@ -98,7 +99,12 @@ public class StrategiePersonnage {
 					console.setPhrase("Je ramasse une potion");
 					arene.ramassePotion(refRMI, refCible);
 
-				} else { // personnage
+				}else if(elemPlusProche instanceof PotionTP){
+					
+					console.setPhrase("Oh! Je  me teleporte!!!");
+					
+					
+				}else { // personnage
 					// duel
 					console.setPhrase("Je fais un duel avec " + elemPlusProche.getNom());
 					arene.lanceAttaque(refRMI, refCible);
