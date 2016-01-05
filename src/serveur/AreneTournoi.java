@@ -3,10 +3,12 @@ package serveur;
 import java.awt.Point;
 import java.rmi.RemoteException;
 import java.rmi.UnmarshalException;
+import java.util.Enumeration;
 import java.util.Scanner;
 
 import client.controle.IConsole;
 import logger.LoggerProjet;
+import serveur.element.Caracteristique;
 import serveur.element.Personnage;
 import serveur.element.Potion;
 import serveur.vuelement.VuePersonnage;
@@ -22,6 +24,9 @@ import utilitaires.Constantes;
 public class AreneTournoi extends Arene {
 
 	private static final long serialVersionUID = 1L;
+	
+	private String[] groupes = new String[30]; // contient le nom de chaque groupe présent dans l'arène
+	private int nombreGroupes = 0; // Nombre de groupes dans l'arène
 	
 	/**
 	 * Mot de passe administrateur.
@@ -78,6 +83,15 @@ public class AreneTournoi extends Arene {
 		
 		int portConsole = port + refRMI;
 		String adr = Constantes.nomRMI(ipConsole, portConsole, "Console" + refRMI);
+		
+		for (int i = 0; i < nombreGroupes; i++) {
+			if (personnage.getGroupe().equals(groupes[i])) {
+				logger.info(Constantes.nomClasse(this), 
+						"Demande de connexion refusee (groupe deja present)");
+				return false;
+			}
+		}
+		groupes[nombreGroupes++] = personnage.getGroupe();
 		
 		if(partieCommencee) {
 			// refus si la partie a commence
@@ -187,4 +201,6 @@ public class AreneTournoi extends Arene {
 		
 		return msg;
 	}
+	
+
 }
