@@ -12,7 +12,6 @@ import serveur.element.Caracteristique;
 import serveur.element.Element;
 import serveur.element.Personnage;
 import serveur.element.Potion;
-import serveur.element.PotionTP;
 import utilitaires.Calculs;
 import utilitaires.Constantes;
 
@@ -96,16 +95,10 @@ public class StrategiePersonnage {
 				// j'interagis directement
 				if(elemPlusProche instanceof Potion) { // potion
 					// ramassage
-					if(elemPlusProche instanceof PotionTP){//potion TP
+					console.setPhrase("Je ramasse une potion");
+					arene.ramassePotion(refRMI, refCible);
 						
-						console.setPhrase("Oh! Je  me teleporte!!!");
-						arene.ramassePotionTP(refRMI, refCible);
-						
-					}else{
-						
-						console.setPhrase("Je ramasse une potion");
-						arene.ramassePotion(refRMI, refCible);
-					}
+					
 				} else { // personnage
 					// duel
 					console.setPhrase("Je fais un duel avec " + elemPlusProche.getNom());
