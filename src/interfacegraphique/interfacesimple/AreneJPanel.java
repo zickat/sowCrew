@@ -113,17 +113,17 @@ public class AreneJPanel extends JPanel {
 
 		int witdthBorder = (Constantes.XMAX_ARENE - Constantes.XMIN_ARENE - (2*offset));
 		int heightBorder = (Constantes.YMAX_ARENE - Constantes.YMIN_ARENE - (2*offset));
-		int width = (int) rect.getWidth();
-		int height = (int) rect.getHeight();
 		
-		int posX = (Constantes.XMIN_ARENE + offset) * ((width  - ELEMENT_SIZE)  / Constantes.XMAX_ARENE);
-		int posY = (Constantes.YMIN_ARENE + offset) * ((height  - ELEMENT_SIZE) / Constantes.YMAX_ARENE);
-
-		witdthBorder *= (width  - ELEMENT_SIZE) / Constantes.XMAX_ARENE;
-		heightBorder *= (height - ELEMENT_SIZE) / Constantes.YMAX_ARENE;
+		// création des coins sup. gauche et inf. droit
+		Point pMin = new Point((Constantes.XMIN_ARENE + offset),(Constantes.YMIN_ARENE + offset));
+		Point pMax = new Point(pMin.x + witdthBorder, pMin.y + heightBorder);
+		
+		// transformation en coordonnées écran
+		pMin = getPositionReelle(new Point(pMin));
+		pMax = getPositionReelle(new Point(pMax));
 
 	
-		Rectangle frame = new Rectangle (posX, posY, witdthBorder, heightBorder);
+		Rectangle frame = new Rectangle (pMin.x, pMin.y, pMax.x - pMin.x, pMax.y - pMin.y);
 
 		
 		// si la connexion est en cours ou il y a une erreur
