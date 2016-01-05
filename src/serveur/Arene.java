@@ -23,6 +23,7 @@ import serveur.element.Element;
 import serveur.element.Monstre;
 import serveur.element.Personnage;
 import serveur.element.Potion;
+import serveur.element.PotionTP;
 import serveur.interaction.Deplacement;
 import serveur.interaction.Duel;
 import serveur.interaction.Ramassage;
@@ -717,6 +718,7 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 		
 		VuePersonnage vuePersonnage = personnages.get(refRMI);
 		VuePotion vuePotion = potions.get(refPotion);
+		Element p = this.elementFromRef(refPotion);
 		
 		if (vuePersonnage.isActionExecutee()) {
 			// si une action a deja ete executee
@@ -729,6 +731,11 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 			// on teste la distance entre le personnage et la potion
 			if (distance <= Constantes.DISTANCE_MIN_INTERACTION) {
 				new Ramassage(this, vuePersonnage, vuePotion).interagit();
+				
+				//si c'est une potion de  teleportation*
+				if(p instanceof PotionTP)
+					personnages.get(refRMI).setPosition(Calculs.positionAleatoireArene());
+				
 				personnages.get(refRMI).executeAction();
 				
 				res = true;
@@ -742,38 +749,6 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 		return res;
 	}
 	
-	@Override
-	public boolean ramassePotionTP(int refRMI, int refPotion) throws RemoteException {
-		boolean res = false;
-		
-		VuePersonnage vuePersonnage = personnages.get(refRMI);
-		VuePotion vuePotion = potions.get(refPotion);
-		
-		if (vuePersonnage.isActionExecutee()) {
-			// si une action a deja ete executee
-			logActionDejaExecutee(refRMI);
-			
-		} else {
-			// sinon, on tente de jouer l'interaction
-			int distance = Calculs.distanceChebyshev(vuePersonnage.getPosition(), vuePotion.getPosition());
-			
-			// on teste la distance entre le personnage et la potion
-			if (distance <= Constantes.DISTANCE_MIN_INTERACTION) {
-				new Ramassage(this, vuePersonnage, vuePotion).interagit();
-				//Teleportation du personnage
-				personnages.get(refRMI).setPosition(Calculs.positionAleatoireArene());
-				personnages.get(refRMI).executeAction();
-				
-				res = true;
-			} else {
-				logger.warning(Constantes.nomClasse(this), nomRaccourciClient(refRMI) + 
-						" a tente d'interagir avec " + vuePotion.getElement().getNom() + 
-						", alors qu'il est trop eloigne !\nDistance = " + distance);
-			}
-		}
-		
-		return res;
-	}
 	
 	
 	@Override
