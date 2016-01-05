@@ -20,12 +20,12 @@ public class VuePersonnage extends VueElement<Personnage> implements Comparable<
 	private String adresseIp = Constantes.IP_DEFAUT;
 	
 	/**
-	 * Derni�re action execut�e � ce tour-ci.
+	 * Derniere action executee a ce tour-ci.
 	 */
 	private Action actionExecutee;
 	
 	/**
-	 * Nombre d'action �xecut�e a ce tour-ci
+	 * Nombre d'actions executees a ce tour-ci
 	 */
 	private int nbAction;
 	

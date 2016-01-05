@@ -24,7 +24,7 @@ public enum Caracteristique {
 	INITIATIVE("Initiative", "INIT", 0, 200, 100),
 
 	/**
-	 * Defense : Definit la réduction de dégats appliquée lorsque le personne subit une attaque
+	 * Defense : Definit la reduction de degats appliques lorsque le personne subit une attaque
 	 */
 	DEFENSE("Defense","DEF", 0, 50, 50);
 

@@ -875,9 +875,9 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 					res= new Clairvoyance(this, client, clientAdv).clair();
 					personnages.get(refRMI).executeClairvoyance();
 					
-						setPhrase(refRMI, "J'ai analys� " + nomRaccourciClient(consoleAdv.getRefRMI()));
+						setPhrase(refRMI, "J'ai analyse " + nomRaccourciClient(consoleAdv.getRefRMI()));
 						console.log(Level.INFO, Constantes.nomClasse(this), 
-								"J'ai analys� " + nomRaccourciClient(refRMI));
+								"J'ai analyse " + nomRaccourciClient(refRMI));
 					
 					return res;
 				} else {
@@ -1089,7 +1089,7 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 			// si une action a deja ete executee
 			logActionDejaExecutee(refRMI);			
 		} else {
-			//On garde le formalisme des int�ractions pour des possibles updates
+			//On garde le formalisme des interactions pour des possibles updates
 			new Soin(this, client, client).interagit();
 			res = true;
 		}
