@@ -1,12 +1,10 @@
 package client;
 
 
+import client.controle.Console;
 import logger.LoggerProjet;
 import serveur.IArene;
-import serveur.element.Caracteristique;
-import serveur.element.Element;
 import serveur.element.Monstre;
-import serveur.element.Potion;
 import utilitaires.Calculs;
 import utilitaires.Constantes;
 
@@ -20,12 +18,17 @@ public class StrategieMonstre extends StrategiePersonnage {
     public StrategieMonstre(String ipArene, int port, String ipConsole,
                             int nbTours, Point position, LoggerProjet logger) {
 
-        super(ipArene, port, ipConsole, "Monstre", "Serveur", new HashMap<Caracteristique, Integer>() {{
-            put(Caracteristique.VIE, 10);
-            put(Caracteristique.FORCE, 10);
-            put(Caracteristique.INITIATIVE, Calculs.nombreAleatoire(0, 200));
-            put(Caracteristique.DEFENSE, 0);
-        }}, nbTours, position, logger);
+        super(ipArene, port, ipConsole, null, null, null, nbTours, position, logger);
+
+        try {
+            console = new Console(ipArene, port, ipConsole, this,
+                    new Monstre(), nbTours, position, logger);
+            logger.info("Lanceur", "Creation de la console reussie");
+
+        } catch (Exception e) {
+            logger.info("Personnage", "Erreur lors de la creation de la console : \n" + e.toString());
+            e.printStackTrace();
+        }
     }
 
     public void executeStrategie(HashMap<Integer, Point> voisins) throws RemoteException {
@@ -43,7 +46,7 @@ public class StrategieMonstre extends StrategiePersonnage {
         int refCible = Calculs.chercheElementProche(position, voisins);
         
         while (refCible != 0) {
-            if (!((arene.estMonstreFromRef(refCible)) || (arene.estPotionFromRef(refCible)))) break;
+            if (!(arene.estMonstreFromRef(refCible) || arene.estPotionFromRef(refCible))) break;
             voisins.remove(refCible);
             refCible = Calculs.chercheElementProche(position, voisins);
         }

@@ -2,6 +2,7 @@ package serveur.vuelement;
 
 import java.awt.Color;
 import java.awt.Point;
+import java.util.Comparator;
 
 import serveur.element.Personnage;
 import utilitaires.Constantes;
@@ -117,7 +118,11 @@ public class VuePersonnage extends VueElement<Personnage> implements Comparable<
 		if(e1.estVivant()) {
 			if(e2.estVivant()) {
 				// tous les deux vivants : reference RMI
-				res = vp2.getRefRMI() - this.getRefRMI();
+				
+				if(e1.getDegatTotal() <= e2.getDegatTotal())
+					res = 1;
+				else
+					res = -1;
 			} else {
 				// vivant avant mort
 				res = -1;
@@ -131,10 +136,9 @@ public class VuePersonnage extends VueElement<Personnage> implements Comparable<
 				res = vp2.getTourMort() - this.getTourMort();
 			}
 		}
-		
-		
 		return res;
 	}
+	
 }
 
 
