@@ -41,12 +41,11 @@ public class StrategieMonstre extends StrategiePersonnage {
         }
 
         int refCible = Calculs.chercheElementProche(position, voisins);
-        Element elemPlusProche = arene.elementFromRef(refCible);
+        
         while (refCible != 0) {
-            if (!((elemPlusProche instanceof Monstre) || (elemPlusProche instanceof Potion))) break;
+            if (!((arene.estMonstreFromRef(refCible)) || (arene.estPotionFromRef(refCible)))) break;
             voisins.remove(refCible);
             refCible = Calculs.chercheElementProche(position, voisins);
-            elemPlusProche = arene.elementFromRef(refCible);
         }
 
         if (refCible == 0) { // je n'ai pas de voisins, j'erre
@@ -57,12 +56,12 @@ public class StrategieMonstre extends StrategiePersonnage {
 
             if (distPlusProche <= Constantes.DISTANCE_MIN_INTERACTION) { // si suffisamment proches
                 // duel
-                console.setPhrase("Je fais un duel avec " + elemPlusProche.getNom());
+                console.setPhrase("Je fais un duel avec " + arene.nomFromRef(refCible));
                 arene.lanceAttaque(refRMI, refCible);
 
             } else { // si voisins, mais plus eloignes
                 // je vais vers le plus proche
-                console.setPhrase("Je vais vers mon voisin " + elemPlusProche.getNom());
+                console.setPhrase("Je vais vers mon voisin " + arene.nomFromRef(refCible));
                 arene.deplace(refRMI, refCible);
             }
         }
