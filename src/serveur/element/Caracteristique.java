@@ -26,7 +26,7 @@ public enum Caracteristique {
 	/**
 	 * Vitesse : definit la vitesse de deplacement d'un personnage
 	 */
-	VITESSE("Vitesse", "VIT", 1, 10, 1);
+	VITESSE("Vitesse", "VIT", 0, 10, 1);
 	
 	/**
 	 * Nom complet.
@@ -112,6 +112,16 @@ public enum Caracteristique {
 	@Override
 	public String toString() {
 		return nomCourt;
+	}
+
+	public static HashMap<Caracteristique, Integer> mapCaracteristiquesNul() {
+		HashMap<Caracteristique, Integer> caractsValues = new HashMap<Caracteristique, Integer>();
+		
+		for (Caracteristique caract : values()) {
+			caractsValues.put(caract, caract.min);
+		}
+		
+		return caractsValues;
 	}
 
 

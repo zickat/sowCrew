@@ -55,9 +55,21 @@ public class Charge extends StrategiePersonnage {
 		Voisins v = new Voisins(voisins, position, p);
 		int refEnnemi = v.ennemisLePlusProche(arene); 
 		if(refEnnemi == 0){
-			//pas d'ennemis
-			arene.setPhrase(refRMI, "Je me la coule douche pas d'ennemis en vue !");
-			arene.deplace(refRMI, 0);
+			v.init();
+			int refAmis = v.amisLePlusProche(arene);
+			if(refAmis == 0){
+				arene.setPhrase(refRMI, "Quelqu'un a un Curly ?");
+				arene.deplace(refRMI, 0);
+			}else{
+				int distance = Calculs.distanceChebyshev(position, arene.getPosition(refAmis));
+				if(distance < Constantes.DISTANCE_MIN_INTERACTION){
+					arene.setPhrase(refRMI, "Tu veut etre mon amis ? tu veut etre mon amis ? !");
+				}else{
+					Point destination = Calculs.meilleurPoint(arene.getPosition(refAmis), position, voisins);
+					arene.setPhrase(refRMI, "Oh un amis la bas !");
+					arene.teleporte(refRMI, destination);
+				}
+			}
 		}else{
 			int distance = Calculs.distanceChebyshev(position, arene.getPosition(refEnnemi));
 			if(distance < Constantes.DISTANCE_MIN_INTERACTION){
@@ -65,7 +77,7 @@ public class Charge extends StrategiePersonnage {
 				arene.lanceAttaque(refRMI, refEnnemi);
 			}else{
 				Point destination = Calculs.meilleurPoint(arene.getPosition(refEnnemi), position, voisins);
-				arene.setPhrase(refRMI, "Chragez "+ arene.elementFromRef(refEnnemi).getNom()+"!!");
+				arene.setPhrase(refRMI, "Chargez "+ arene.elementFromRef(refEnnemi).getNom()+"!!");
 				arene.teleporte(refRMI, destination);
 			}
 		}

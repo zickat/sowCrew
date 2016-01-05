@@ -18,6 +18,7 @@ import java.util.logging.Level;
 import client.controle.IConsole;
 import logger.LoggerProjet;
 import serveur.element.Caracteristique;
+import serveur.element.DotHot;
 import serveur.element.Element;
 import serveur.element.Personnage;
 import serveur.element.Potion;
@@ -154,7 +155,10 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 			synchronized(this) {
 				// tri des references par initiative
 				listRef = getSortedRefs();
-				
+				// applique buff/debuff
+				for (VuePersonnage personnage : personnages.values()) {
+					((Personnage)personnage.getElement()).appliquerBuffs();
+				}
 				// pour chaque personnage, on joue sa strategie
 				for(int refRMI : listRef) {
 					try {						
@@ -736,6 +740,12 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 		return res;
 	}
 	
+	@Override
+	public void appliquerDotHot(int refRMI, DotHot buff) throws RemoteException {
+		Personnage personnage = (Personnage)elementFromRef(refRMI);
+		personnage.ajouterBuffs(buff);
+	}
+
 	@Override
 	public boolean lanceAttaque(int refRMI, int refRMIAdv) throws RemoteException {
 		boolean res = false;

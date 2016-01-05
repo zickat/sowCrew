@@ -6,6 +6,7 @@ import java.rmi.RemoteException;
 import java.util.HashMap;
 
 import client.controle.IConsole;
+import serveur.element.DotHot;
 import serveur.element.Element;
 import serveur.element.Personnage;
 import serveur.element.Potion;
@@ -164,6 +165,14 @@ public interface IArene extends Remote {
 	 * @throws RemoteException
 	 */
 	public boolean ramassePotion(int refRMI, int refPotion) throws RemoteException;
+	
+	/**
+	 * Applique un buff positif ou negatif a un personnage
+	 * @param refRMI reference RMI du personnage sur lequel on applique le buff
+	 * @param buff buff a appliquer
+	 * @throws RemoteException
+	 */
+	public void appliquerDotHot(int refRMI, DotHot buff)throws RemoteException;
 	
 	/**
 	 * Execute un duel entre le personnage correspondant a la console donnee 

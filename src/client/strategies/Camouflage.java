@@ -11,13 +11,15 @@ import client.StrategiePersonnage;
 import client.Voisins;
 import logger.LoggerProjet;
 import serveur.IArene;
+import serveur.element.Caracteristique;
+import serveur.element.DotHot;
 import serveur.element.Personnage;
 import serveur.vuelement.VuePersonnage;
 import utilitaires.Calculs;
 import utilitaires.Constantes;
 
 /**
- * @author valen
+ * @author val
  *
  */
 public class Camouflage extends StrategiePersonnage {
@@ -72,7 +74,10 @@ public class Camouflage extends StrategiePersonnage {
 					arene.seCamouflerOuDeCamoufler(refRMI);
 				}
 				arene.setPhrase(refRMI, "Mon epee va faire couler votre sang !");
-				arene.lanceAttaque(refRMI, refEnnemi);
+				HashMap<Caracteristique, Integer> caracts = new HashMap<>();
+				caracts.put(Caracteristique.VIE, -1);
+				DotHot dHot = new DotHot("poison", caracts , 5); 
+				arene.appliquerDotHot(refEnnemi, dHot);
 			}else{
 				Point destination = Calculs.meilleurPoint(arene.getPosition(refEnnemi), position, voisins);
 				arene.setPhrase(refRMI, "Chragez "+ arene.elementFromRef(refEnnemi).getNom()+"!!");
