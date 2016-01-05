@@ -4,10 +4,9 @@ import java.awt.Point;
 import java.rmi.RemoteException;
 import java.util.logging.Level;
 
-import javax.management.monitor.MonitorSettingException;
-
 import serveur.Arene;
 import serveur.element.Caracteristique;
+import serveur.element.Monstre;
 import serveur.element.Personnage;
 import serveur.vuelement.VuePersonnage;
 import utilitaires.Calculs;
@@ -38,7 +37,7 @@ public class Duel extends Interaction<VuePersonnage> {
 			int defDefenseur = pDefenseur.getCaract(Caracteristique.DEFENSE);
 			
 			/**
-			 * calcul des d�gats avec reduction
+			 * calcul des degats avec reduction
 			 */
 			double tauxDegatRecu = 1.0-(defDefenseur/100.0);
 			int perteVie = (int) (forceAttaquant*tauxDegatRecu);
@@ -59,6 +58,8 @@ public class Duel extends Interaction<VuePersonnage> {
 				
 				logs(Level.INFO, Constantes.nomRaccourciClient(attaquant) + " colle une beigne ("
 						+ perteVie + " points de degats) a " + Constantes.nomRaccourciClient(defenseur));
+				Personnage at = attaquant.getElement();
+				at.setDegatTotal(at.getDegatTotal()+perteVie);
 			}
 			
 			/**

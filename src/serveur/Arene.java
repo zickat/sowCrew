@@ -8,6 +8,7 @@ import java.rmi.RemoteException;
 import java.rmi.UnmarshalException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
@@ -19,6 +20,7 @@ import client.controle.IConsole;
 import logger.LoggerProjet;
 import serveur.element.Caracteristique;
 import serveur.element.Element;
+import serveur.element.Monstre;
 import serveur.element.Personnage;
 import serveur.element.Potion;
 import serveur.element.PotionTP;
@@ -490,9 +492,7 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 	public IConsole consoleFromVue(VueElement<?> vue) throws RemoteException {
 		return consoleFromRef(vue.getRefRMI());
 	}
-
-
-	@Override
+	
 	public VueElement<?> vueFromRef(int refRMI) throws RemoteException {
 		VueElement<?> vueElement = personnages.get(refRMI);
 		
@@ -628,17 +628,32 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 	 * @return liste des personnages ordonnes pour le classement final
 	 */
 	private List<VuePersonnage> getPersonnagesClassement() {
-		PriorityQueue<VuePersonnage> classement = new PriorityQueue<VuePersonnage>();
+		/*PriorityQueue<VuePersonnage> classement = new PriorityQueue<VuePersonnage>();
 		
-		// recuperation des personnages en vie
-		for(VuePersonnage vuePers : personnages.values()) {
-			classement.offer(vuePers);
+		
+		for(VuePersonnage vue : this.personnages.values()){
+			classement.offer(vue);
 		}
 		
 		// recuperation des personnages elimines
 		for(VuePersonnage vuePers : personnagesMorts) {
 			classement.offer(vuePers);
+		}*/
+		
+		List<VuePersonnage> classement = new ArrayList<>();
+		
+		for(VuePersonnage vue : this.personnages.values()){
+			classement.add(vue);
 		}
+		
+		for(VuePersonnage vuePers : personnagesMorts) {
+			classement.add(vuePers);
+		}
+		
+		classement.sort(new ComparatorVuePersonnage());
+		
+		for(VuePersonnage vue : classement)
+			System.out.println("DEGAT"+vue.getElement().getDegatTotal());
 		
 		// retour sous forme de liste pour les futures utilisations
 		return new ArrayList<VuePersonnage>(classement); 
@@ -995,5 +1010,72 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 	@Override
 	public void lancePotion(Potion potion, Point position, String motDePasse) throws RemoteException {}
 
+	public class ComparatorVuePersonnage implements Comparator<VuePersonnage> {
+
+		@Override
+		public int compare(VuePersonnage o1, VuePersonnage o2) {
+			
+			int res;
+			
+			Personnage e1 = o1.getElement();
+			Personnage e2 = o2.getElement();
+			
+			if(e1.estVivant()) {
+				if(e2.estVivant()) {
+					// tous les deux vivants : reference RMI
+					
+					if(e1.getDegatTotal() <= e2.getDegatTotal())
+						res = 1;
+					else
+						res = -1;
+				} else {
+					// vivant avant mort
+					res = -1;
+				}
+			} else {
+				if(e2.estVivant()) {
+					// vivant avant mort
+					res = 1;
+				} else {
+					// tous les deux morts : celui mort le plus tard avant
+					res = o2.getTourMort() - o1.getTourMort();
+				}
+			}
+			return res;
+		}
+
+	}
+
+	@Override
+	public String nomFromRef(int refRMI) throws RemoteException {
+		return elementFromRef(refRMI).getNom();
+	}
+
+	@Override
+	public int caractFromRef(int refRMI, Caracteristique caract) throws RemoteException {
+		
+		if (estPotionFromRef(refRMI) || estMonstreFromRef(refRMI)){
+			return elementFromRef(refRMI).getCaract(caract);
+		}
+		else if (caract == Caracteristique.VIE){
+			return elementFromRef(refRMI).getCaract(Caracteristique.VIE);
+		}
+		return 0;
+	}
+
+	@Override
+	public boolean estPotionFromRef(int refRMI) throws RemoteException {
+		return (elementFromRef(refRMI) instanceof Potion);
+	}
 	
+	@Override
+	public boolean estMonstreFromRef(int refRMI) throws RemoteException {
+		return (elementFromRef(refRMI) instanceof Monstre);
+	}
+
+	@Override
+	public boolean estPersonnageFromRef(int refRMI) throws RemoteException {
+		return (elementFromRef(refRMI) instanceof Personnage);
+	}
+
 }
