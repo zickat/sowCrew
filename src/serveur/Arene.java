@@ -19,6 +19,7 @@ import client.controle.IConsole;
 import logger.LoggerProjet;
 import serveur.element.Caracteristique;
 import serveur.element.Element;
+import serveur.element.Monstre;
 import serveur.element.Personnage;
 import serveur.element.Potion;
 import serveur.interaction.Deplacement;
@@ -489,9 +490,7 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 	public IConsole consoleFromVue(VueElement<?> vue) throws RemoteException {
 		return consoleFromRef(vue.getRefRMI());
 	}
-
-
-	@Override
+	
 	public VueElement<?> vueFromRef(int refRMI) throws RemoteException {
 		VueElement<?> vueElement = personnages.get(refRMI);
 		
@@ -985,6 +984,38 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 
 	@Override
 	public void lancePotion(Potion potion, Point position, String motDePasse) throws RemoteException {}
+
+	@Override
+	public String nomFromRef(int refRMI) throws RemoteException {
+		return elementFromRef(refRMI).getNom();
+	}
+
+	@Override
+	public int caractFromRef(int refRMI, Caracteristique caract) throws RemoteException {
+		
+		if (estPotionFromRef(refRMI) || estMonstreFromRef(refRMI)){
+			return elementFromRef(refRMI).getCaract(caract);
+		}
+		else if (caract == Caracteristique.VIE){
+			return elementFromRef(refRMI).getCaract(Caracteristique.VIE);
+		}
+		return 0;
+	}
+
+	@Override
+	public boolean estPotionFromRef(int refRMI) throws RemoteException {
+		return (elementFromRef(refRMI) instanceof Potion);
+	}
+	
+	@Override
+	public boolean estMonstreFromRef(int refRMI) throws RemoteException {
+		return (elementFromRef(refRMI) instanceof Monstre);
+	}
+
+	@Override
+	public boolean estPersonnageFromRef(int refRMI) throws RemoteException {
+		return (elementFromRef(refRMI) instanceof Personnage);
+	}
 
 	
 }
