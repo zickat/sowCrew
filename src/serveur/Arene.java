@@ -27,6 +27,7 @@ import serveur.interaction.Ramassage;
 import serveur.vuelement.VueElement;
 import serveur.vuelement.VuePersonnage;
 import serveur.vuelement.VuePotion;
+import utilitaires.Action;
 import utilitaires.Calculs;
 import utilitaires.Constantes;
 
@@ -714,7 +715,7 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 			// on teste la distance entre le personnage et la potion
 			if (distance <= Constantes.DISTANCE_MIN_INTERACTION) {
 				new Ramassage(this, vuePersonnage, vuePotion).interagit();
-				personnages.get(refRMI).executeAction();
+				personnages.get(refRMI).executeRammassage();
 				
 				res = true;
 			} else {
@@ -734,11 +735,7 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 		VuePersonnage client = personnages.get(refRMI);
 		VuePersonnage clientAdv = personnages.get(refRMIAdv);
 		
-		if (personnages.get(refRMI).isActionExecutee()) {
-			// si une action a deja ete executee
-			logActionDejaExecutee(refRMI);
-			
-		} else {
+		if (!personnages.get(refRMI).isActionExecutee() || (client.isActionExecutee(Action.DEPLACER) && client.secondeActionPossible())){
 			// sinon, on tente de jouer l'interaction
 			IConsole console = consoleFromRef(refRMI);
 			IConsole consoleAdv = consoleFromRef(refRMIAdv);
@@ -762,7 +759,7 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 							" attaque " + nomRaccourciClient(consoleAdv.getRefRMI()));
 			
 					new Duel(this, client, clientAdv).interagit();
-					personnages.get(refRMI).executeAction();
+					personnages.get(refRMI).executeAttaquer();
 					
 					// si l'adversaire est mort
 					if (!persAdv.estVivant()) {
@@ -791,6 +788,11 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 						nomRaccourciClient(refRMIAdv) + " est trop eloigne !\nDistance = " + distance);
 			}
 		}
+		else{
+
+			// si une action a deja ete executee
+			logActionDejaExecutee(refRMI);
+		}
 		
 		return res;
 	}
@@ -808,7 +810,7 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 		} else {
 			// sinon, on tente de jouer l'interaction
 			new Deplacement(client, getVoisins(refRMI)).seDirigeVers(refCible);
-			client.executeAction();
+			client.executeDeplacer();
 			
 			res = true;
 		}
@@ -823,12 +825,22 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 		VuePersonnage client = personnages.get(refRMI);
 		
 		if (client.isActionExecutee()) {
-			// si une action a deja ete executee
-			logActionDejaExecutee(refRMI);
+			if(client.isActionExecutee(Action.ATTAQUER) && client.secondeActionPossible()){
+
+				// sinon, on tente de jouer l'interaction
+				new Deplacement(client, getVoisins(refRMI)).seDirigeVers(objectif);
+				client.executeAttaquer();
+
+				res = true;
+			}
+			else{
+				// si une action a deja ete executee
+				logActionDejaExecutee(refRMI);
+			}
 		} else {
 			// sinon, on tente de jouer l'interaction
 			new Deplacement(client, getVoisins(refRMI)).seDirigeVers(objectif);
-			client.executeAction();
+			client.executeDeplacer();
 
 			res = true;
 		}
