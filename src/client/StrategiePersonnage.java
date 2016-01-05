@@ -25,6 +25,10 @@ public class StrategiePersonnage {
 	 * (l'arene).
 	 */
 	protected Console console;
+	
+	protected StrategiePersonnage(LoggerProjet logger){
+		logger.info("Lanceur", "Creation de la console...");
+	}
 
 	/**
 	 * Cree un personnage, la console associe et sa strategie.
@@ -40,8 +44,7 @@ public class StrategiePersonnage {
 	public StrategiePersonnage(String ipArene, int port, String ipConsole, 
 			String nom, String groupe, HashMap<Caracteristique, Integer> caracts,
 			int nbTours, Point position, LoggerProjet logger) {
-		
-		logger.info("Lanceur", "Creation de la console...");
+		this(logger);
 		
 		try {
 			console = new Console(ipArene, port, ipConsole, this, 
