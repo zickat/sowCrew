@@ -4,6 +4,8 @@ import java.awt.Point;
 import java.rmi.RemoteException;
 import java.util.logging.Level;
 
+import javax.management.monitor.MonitorSettingException;
+
 import serveur.Arene;
 import serveur.element.Caracteristique;
 import serveur.element.Personnage;
@@ -36,7 +38,7 @@ public class Duel extends Interaction<VuePersonnage> {
 			int defDefenseur = pDefenseur.getCaract(Caracteristique.DEFENSE);
 			
 			/**
-			 * calcul des dégats avec reduction
+			 * calcul des dï¿½gats avec reduction
 			 */
 			double tauxDegatRecu = 1.0-(defDefenseur/100.0);
 			int perteVie = (int) (forceAttaquant*tauxDegatRecu);
@@ -62,7 +64,7 @@ public class Duel extends Interaction<VuePersonnage> {
 			/**
 			 * Regain de vie si l'on tue le defenseur
 			 */
-			if (pDefenseur.getCaract(Caracteristique.VIE) <= 0){
+			if (pDefenseur.getCaract(Caracteristique.VIE) <= 0 && !(pDefenseur instanceof Monstre) && !(pAttaquant instanceof Monstre)){
 				arene.incrementeCaractElement(attaquant, Caracteristique.VIE, 10);
 			}
 			
