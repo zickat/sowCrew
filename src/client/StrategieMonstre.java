@@ -46,7 +46,7 @@ public class StrategieMonstre extends StrategiePersonnage {
         int refCible = Calculs.chercheElementProche(position, voisins);
         
         while (refCible != 0) {
-            if (!((arene.estMonstreFromRef(refCible)) || (arene.estPotionFromRef(refCible)))) break;
+            if (!(arene.estMonstreFromRef(refCible) || arene.estPotionFromRef(refCible))) break;
             voisins.remove(refCible);
             refCible = Calculs.chercheElementProche(position, voisins);
         }
