@@ -2,7 +2,6 @@ package serveur.vuelement;
 
 import java.awt.Color;
 import java.awt.Point;
-import java.util.Comparator;
 
 import serveur.element.Personnage;
 import utilitaires.Action;
@@ -21,12 +20,12 @@ public class VuePersonnage extends VueElement<Personnage> implements Comparable<
 	private String adresseIp = Constantes.IP_DEFAUT;
 	
 	/**
-	 * Dernière action executée à ce tour-ci.
+	 * Derniï¿½re action executï¿½e ï¿½ ce tour-ci.
 	 */
 	private Action actionExecutee;
 	
 	/**
-	 * Nombre d'action éxecutée a ce tour-ci
+	 * Nombre d'action ï¿½xecutï¿½e a ce tour-ci
 	 */
 	private int nbAction;
 	

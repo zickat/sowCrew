@@ -24,7 +24,7 @@ import utilitaires.Constantes;
  *
  */
 public class AreneTournoi extends Arene {
-	private static List<Point> lstCoord = new ArrayList<>();;
+	private static List<Point> lstCoord = new ArrayList<Point>();
 	private int numeroPersonnage = 0;
 	private static final long serialVersionUID = 1L;
 	

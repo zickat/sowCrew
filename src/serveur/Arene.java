@@ -8,6 +8,7 @@ import java.rmi.RemoteException;
 import java.rmi.UnmarshalException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Hashtable;
@@ -659,9 +660,9 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 			classement.offer(vuePers);
 		}*/
 		
-		List<VuePersonnage> classement = new ArrayList<>();
+		List<VuePersonnage> classement = new ArrayList<VuePersonnage>();
 		
-		for(VuePersonnage vue : this.personnages.values()){
+		for(VuePersonnage vue : this.personnages.values()) {
 			classement.add(vue);
 		}
 		
@@ -669,10 +670,12 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 			classement.add(vuePers);
 		}
 		
-		classement.sort(new ComparatorVuePersonnage());
+		Collections.sort(classement, new ComparatorVuePersonnage());
 		
+		/*
 		for(VuePersonnage vue : classement)
 			System.out.println("DEGAT"+vue.getElement().getDegatTotal());
+		*/
 		
 		// retour sous forme de liste pour les futures utilisations
 		return new ArrayList<VuePersonnage>(classement); 

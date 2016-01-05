@@ -9,9 +9,7 @@ import client.controle.Console;
 import logger.LoggerProjet;
 import serveur.IArene;
 import serveur.element.Caracteristique;
-import serveur.element.Element;
 import serveur.element.Personnage;
-import serveur.element.Potion;
 import utilitaires.Calculs;
 import utilitaires.Constantes;
 
