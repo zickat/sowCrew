@@ -102,12 +102,14 @@ public class StrategiePersonnage {
 					// duel
 					console.setPhrase("Je fais un duel avec " + elemPlusProche.getNom());
 					arene.lanceAttaque(refRMI, refCible);
+					arene.deplace(refRMI, refCible);
 				}
 				
 			} else { // si voisins, mais plus eloignes
 				// je vais vers le plus proche
 				console.setPhrase("Je vais vers mon voisin " + elemPlusProche.getNom());
 				arene.deplace(refRMI, refCible);
+				arene.lanceAttaque(refRMI, refCible);
 			}
 		}
 	}

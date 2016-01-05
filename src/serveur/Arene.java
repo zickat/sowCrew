@@ -817,7 +817,7 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 					personnages.get(refRMIAdv).getPosition());
 
 			// on teste la distance entre les personnages
-			if (distance <= Constantes.VISION || distance > Constantes.VISION) {
+			if (distance <= Constantes.VISION) {
 				Personnage pers = (Personnage) elementFromRef(refRMI);
 				Personnage persAdv = (Personnage) elementFromRef(refRMIAdv);
 				
@@ -862,16 +862,17 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 		
 		VuePersonnage client = personnages.get(refRMI);
 		
-		if (client.isActionExecutee()) {
-			// si une action a deja ete executee
-			logActionDejaExecutee(refRMI);
-			
-		} else {
+		if (!client.isActionExecutee() || (client.isActionExecutee(Action.ATTAQUER) && client.secondeActionPossible())) {
+
 			// sinon, on tente de jouer l'interaction
 			new Deplacement(client, getVoisins(refRMI)).seDirigeVers(refCible);
 			client.executeDeplacer();
 			
 			res = true;
+			
+		} else {
+			// si une action a deja ete executee
+			logActionDejaExecutee(refRMI);
 		}
 		
 		return res;
