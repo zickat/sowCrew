@@ -119,11 +119,29 @@ public interface IArene extends Remote {
 	public boolean estPotionFromRef(int refRMI) throws RemoteException;
 	
 	/**
+	 * Permet de verifier si c'est un monstre
+	 * 
+	 * @param refRMI reference de l'element
+	 * @return vrai si l'element est un monstre
+	 * @throws RemoteException
+	 */
+	public boolean estMonstreFromRef(int refRMI) throws RemoteException;
+	
+	/**
+	 * Permet de verifier si c'est un personnage
+	 * 
+	 * @param refRMI reference de l'element
+	 * @return vrai si l'element est un personnage
+	 * @throws RemoteException
+	 */
+	public boolean estPersonnageFromRef(int refRMI) throws RemoteException;
+	
+	/**
 	 * Permet de recuperer une caracteristique d'un element
 	 * 
 	 * @param refRMI reference de l'element
 	 * @param caract caracteristique a recuperer
-	 * @return si l'element est une potion, retourne la caracteristique donnee.
+	 * @return si l'element est une potion ou un monstre, retourne la caracteristique donnee.
 	 *         si l'element est un personnage, retourne la vie, ou 0 si une autre
 	 *         caracteristique est demandee
 	 * @throws RemoteException
