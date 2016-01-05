@@ -1,11 +1,5 @@
 package serveur;
 
-import static utilitaires.Constantes.OFFSET_ARENE;
-import static utilitaires.Constantes.XMAX_ARENE;
-import static utilitaires.Constantes.XMIN_ARENE;
-import static utilitaires.Constantes.YMAX_ARENE;
-import static utilitaires.Constantes.YMIN_ARENE;
-
 import java.awt.Point;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
@@ -98,6 +92,7 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 	 * Gestionnaire des logs.
 	 */
 	protected LoggerProjet logger;
+	
 
 	/**
 	 * Constructeur de l'arene.
@@ -1010,16 +1005,14 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 	/**
 	 * Réduit la taille de la zone jouable.
 	 */
-	public static void reduireArene() {
-		if ((XMAX_ARENE - XMIN_ARENE - 10) > 50) // TODO mettre une vraie variable (MINIMUM_ARENE)
-		{
-			XMIN_ARENE += 5;
-			XMAX_ARENE -= 5;
+	public void reduireArene() {
+		// if (this.getOffset() * 2 >= 50)
+		// {
+		// 	Calculs.setOffset(Calculs.getOffset() + 5);
+		// }
+	}
 	
-			YMIN_ARENE += 5;
-			YMAX_ARENE -= 5;
-			
-			OFFSET_ARENE += 5;
-		}
+	public int getOffset () {
+		return Calculs.getOffset();
 	}
 }

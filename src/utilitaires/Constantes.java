@@ -64,27 +64,22 @@ public class Constantes {
 	/**
 	 * Abscisse minimale de l'arene.
 	 */
-	public static int XMIN_ARENE = 0;
+	public static final int XMIN_ARENE = 0;
 
 	/**
 	 * Abscisse maximale de l'arene.
 	 */
-	public static int XMAX_ARENE = 100;
+	public static final int XMAX_ARENE = 100;
 	
 	/**
 	 * Ordonnee minimale de l'arene.
 	 */
-	public static int YMIN_ARENE = 0;
+	public static final int YMIN_ARENE = 0;
 
 	/**
 	 * Ordonnee maximale de l'arene.
 	 */
-	public static int YMAX_ARENE = 100;
-	
-	/**
-	 * Offset pour retrouver l'arène init.
-	 */
-	public static int OFFSET_ARENE = 0;
+	public static final int YMAX_ARENE = 100;
 	
 	/**
 	 * Taille minimum de l'arene
