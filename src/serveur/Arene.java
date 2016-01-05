@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.logging.Level;
+import java.util.Map.Entry;
 
 import client.controle.IConsole;
 import logger.LoggerProjet;
@@ -98,6 +99,7 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 	 * Gestionnaire des logs.
 	 */
 	protected LoggerProjet logger;
+	
 
 	/**
 	 * Constructeur de l'arene.
@@ -148,6 +150,9 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 		// liste qui va contenir les references RMI des personnages, 
 		// ordonnees par leur initiative
 		List<Integer> listRef;
+		
+		// repérere le début de la partie dans le temps
+		long derniereReduction = System.currentTimeMillis();
 		
 		while(!partieFinie) {
 			// moment de debut du tour
@@ -206,6 +211,17 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 			
 			tour++;
 			verifierPartieFinie();
+			
+			// vérifier que le temps a dépassé 2 min.
+			long tempsDepuisReduction = System.currentTimeMillis() - derniereReduction;
+			if (tempsDepuisReduction >= Constantes.INTERVALLE_OFFSET)
+			{
+				// réinit. le timer
+				derniereReduction = System.currentTimeMillis();
+				logger.info("2 min dépassé");
+				reduireArene();
+				verifPersoBornes(personnages);
+			}
 			
 			try {
 				long dureeTour = System.currentTimeMillis() - begin;
@@ -856,9 +872,9 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 					res= new Clairvoyance(this, client, clientAdv).clair();
 					personnages.get(refRMI).executeClairvoyance();
 					
-						setPhrase(refRMI, "J'ai analys� " + nomRaccourciClient(consoleAdv.getRefRMI()));
+						setPhrase(refRMI, "J'ai analys� " + nomRaccourciClient(consoleAdv.getRefRMI()));
 						console.log(Level.INFO, Constantes.nomClasse(this), 
-								"J'ai analys� " + nomRaccourciClient(refRMI));
+								"J'ai analys� " + nomRaccourciClient(refRMI));
 					
 					return res;
 				} else {
@@ -1070,7 +1086,7 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 			// si une action a deja ete executee
 			logActionDejaExecutee(refRMI);			
 		} else {
-			//On garde le formalisme des int�ractions pour des possibles updates
+			//On garde le formalisme des int�ractions pour des possibles updates
 			new Soin(this, client, client).interagit();
 			res = true;
 		}
@@ -1096,6 +1112,65 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 
 	@Override
 	public void lancePotion(Potion potion, Point position, String motDePasse) throws RemoteException {}
+
+
+
+	/**
+	 * Réduit la taille de la zone jouable.
+	 */
+	public void reduireArene() {
+		if (this.getOffset() * 2 < Constantes.MINIMUM_ARENE)
+		{
+		 	Calculs.setOffset(Calculs.getOffset() + 5);
+		}
+	}
+	
+	@Override
+	public int getOffset () {
+		return Calculs.getOffset();
+	}
+	
+	/**
+	 * Vérfier que tous les persos sont dans les bornes et bouger sinon
+	 */
+	private void verifPersoBornes(Hashtable<Integer, VuePersonnage> lsperso)
+	{
+		for (Entry<Integer, VuePersonnage> entry : lsperso.entrySet())
+		{
+			VuePersonnage perso = entry.getValue();
+			boolean ok = verifDansBorne(perso.getPosition());
+			if (! ok)
+			{
+				// décaler le personnage sur la position la plus proche dans l'arène
+				Point newpos = new Point (perso.getPosition());
+				if (newpos.x > Constantes.XMAX_ARENE - getOffset())
+					newpos.x =  Constantes.XMAX_ARENE - getOffset();
+				
+				if (newpos.x < getOffset())
+					newpos.x = getOffset();
+				
+				if (newpos.y > Constantes.YMAX_ARENE - getOffset())
+					newpos.y = Constantes.YMAX_ARENE - getOffset();
+				
+				if (newpos.y < getOffset())
+					newpos.y = getOffset();
+				
+				perso.setPosition(newpos);
+			}
+		}
+	}
+	
+	/**
+	 * Vérifie UN personnage
+	 */
+	private boolean verifDansBorne(Point p)
+	{
+		return
+			(p.x > Constantes.XMIN_ARENE + getOffset()) &&
+			(p.x > Constantes.XMAX_ARENE - getOffset()) &&
+			(p.y < Constantes.YMIN_ARENE + getOffset()) &&
+			(p.y > Constantes.YMAX_ARENE - getOffset());
+	}
 
 	public class ComparatorVuePersonnage implements Comparator<VuePersonnage> {
 
@@ -1166,3 +1241,4 @@ public class Arene extends UnicastRemoteObject implements IAreneIHM, Runnable {
 	}
 
 }
+

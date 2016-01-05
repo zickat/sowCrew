@@ -113,7 +113,7 @@ public class AreneTournoi extends Arene {
 		}else{
 				
 			if(numeroPersonnage < 10){
-				if(partieCommencee && !(personnage instanceof Monstre))) {
+				if(partieCommencee && !(personnage instanceof Monstre)) {
 					// refus si la partie a commence
 					res = false;
 					

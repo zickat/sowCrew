@@ -286,7 +286,7 @@ public class IHM extends JFrame implements Runnable {
 				List<VuePotion> potions = arene.getPotions();
 
 				infosPanel.setElements(personnages, personnagesMorts, potions);
-				arenePanel.setVues(personnages, potions);
+				arenePanel.setVues(personnages, potions, arene.getOffset());
 
 				// MAJ du timer
 				int tempsRestant = arene.getNbToursRestants();
