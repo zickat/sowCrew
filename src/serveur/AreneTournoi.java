@@ -7,6 +7,8 @@ import java.util.Scanner;
 
 import client.controle.IConsole;
 import logger.LoggerProjet;
+import serveur.element.Caracteristique;
+import serveur.element.Monstre;
 import serveur.element.Personnage;
 import serveur.element.Potion;
 import serveur.vuelement.VuePersonnage;
@@ -33,6 +35,10 @@ public class AreneTournoi extends Arene {
 	 */
 	private boolean partieCommencee;
 
+	
+	private String[] groupes = new String[30]; // contient le nom de chaque groupe présent dans l'arène
+	private int nombreGroupes = 0; // Nombre de groupes dans l'arène
+	
 	/**
 	 * Constructeur de l'arene de tournoi.
 	 * @param port le port de connexion
@@ -74,19 +80,40 @@ public class AreneTournoi extends Arene {
 	@Override
 	public synchronized boolean connecte(int refRMI, String ipConsole, 
 			Personnage personnage, int nbTours, Point position) throws RemoteException {
+		
 		boolean res;
 		
 		int portConsole = port + refRMI;
 		String adr = Constantes.nomRMI(ipConsole, portConsole, "Console" + refRMI);
 		
-		if(partieCommencee) {
-			// refus si la partie a commence
+		for (int i = 0; i < nombreGroupes; i++) {
+			if (personnage.getGroupe().equals(groupes[i])) {
+				logger.info(Constantes.nomClasse(this), 
+						"Demande de connexion refusee (groupe deja present)");
+				return false;
+			}
+		}
+		groupes[nombreGroupes++] = personnage.getGroupe();
+		
+		
+		if((personnage.getCaract(Caracteristique.FORCE) != 30 || personnage.getCaract(Caracteristique.VIE) != 100 
+				|| personnage.getCaract(Caracteristique.INITIATIVE) != 100 || personnage.getCaract(Caracteristique.DEFENSE) != 50)
+				&& !(personnage instanceof Monstre)){
 			res = false;
 			
 			logger.info(Constantes.nomClasse(this), 
-					"Demande de connexion refusee (partie deja commencee) (" + adr + ")");
-		} else {
-			res = super.connecte(refRMI, ipConsole, personnage, nbTours, position);
+					"Demande de connexion refusee  (" + adr + ")");
+		}
+		else {
+			if(partieCommencee) {
+				// refus si la partie a commence
+				res = false;
+				
+				logger.info(Constantes.nomClasse(this), 
+						"Demande de connexion refusee (partie deja commencee) (" + adr + ")");
+			} else {
+				res = super.connecte(refRMI, ipConsole, personnage, nbTours, position);
+			}
 		}
 		
 		return res;
