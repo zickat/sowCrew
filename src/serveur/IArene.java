@@ -4,6 +4,7 @@ import java.awt.Point;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.HashMap;
+import java.util.List;
 
 import client.controle.IConsole;
 import serveur.element.DotHot;
@@ -102,6 +103,8 @@ public interface IArene extends Remote {
 	 */
 	public HashMap<Integer, Point> getVoisins(int refRMI) throws RemoteException;
 
+	public List<VuePersonnage> getPersonnagesMorts() throws RemoteException;
+	
 	/**
 	 * Permet de recuperer une copie de l'element correspondant a la reference 
 	 * RMI.

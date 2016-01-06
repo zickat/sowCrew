@@ -104,5 +104,9 @@ public class Personnage extends Element {
 			incrementeCaract(car, total.get(car));
 		}
 	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
 	
 }

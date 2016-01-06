@@ -1,0 +1,785 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.9" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="client.strategies.Camouflage" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/client/strategies/Camouflage.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="329" x="7034" y="482"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="client.strategies.Charge" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/client/strategies/Charge.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="98" width="307" x="6687" y="482"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="client.StrategiePersonnage" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/client/StrategiePersonnage.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="543" x="6517" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="client.strategies.LifeSteal" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/client/strategies/LifeSteal.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="314" x="5998" y="482"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="client.strategies.Fuite" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/client/strategies/Fuite.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="295" x="6352" y="482"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="serveur.interaction.Necromancie" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/serveur/interaction/Necromancie.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="289" x="4158" y="482"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="serveur.interaction.Soigner" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/serveur/interaction/Soigner.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="95" x="4023" y="482"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="serveur.interaction.Interaction" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/serveur/interaction/Interaction.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="224" x="4487" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="serveur.interaction.Deplacement" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/serveur/interaction/Deplacement.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="292" x="2603" y="482"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="serveur.interaction.Duel" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/serveur/interaction/Duel.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="247" x="5245" y="482"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="serveur.interaction.DuelLifeSteal" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/serveur/interaction/DuelLifeSteal.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="289" x="4487" y="482"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="serveur.interaction.Hypnose" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/serveur/interaction/Hypnose.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="95" x="4816" y="482"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="serveur.interaction.Ramassage" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/serveur/interaction/Ramassage.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="254" x="4951" y="482"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="serveur.interaction.Teleportation" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/serveur/interaction/Teleportation.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="291" x="2088" y="1683"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="serveur.element.personnages.Squelette" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/serveur/element/personnages/Squelette.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="307" x="3773" y="2537"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="serveur.element.personnages.Separator" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/serveur/element/personnages/Separator.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="310" x="4120" y="2537"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="serveur.element.personnages.Voleur" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/serveur/element/personnages/Voleur.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="276" x="2447" y="2537"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="serveur.element.personnages.Necromancien" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/serveur/element/personnages/Necromancien.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="276" x="3141" y="2537"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="serveur.element.personnages.Tank" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/serveur/element/personnages/Tank.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="276" x="3457" y="2537"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="serveur.element.personnages.Soigneur" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/serveur/element/personnages/Soigneur.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="276" x="2131" y="2537"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="serveur.element.personnages.SeigneurDraugr" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/serveur/element/personnages/SeigneurDraugr.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="338" x="2763" y="2537"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="serveur.element.personnages.Mentalist" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/serveur/element/personnages/Mentalist.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="276" x="4786" y="2537"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="serveur.element.personnages.Liche" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/serveur/element/personnages/Liche.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="276" x="4470" y="2537"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" name="serveur.element.Personnage" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/serveur/element/Personnage.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="320" x="3457" y="2326"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="serveur.element.Potion" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/serveur/element/Potion.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="291" x="4495" y="2326"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="26" language="java" name="serveur.element.Caracteristique" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/serveur/element/Caracteristique.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="369" width="334" x="2877" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="27" language="java" name="serveur.element.Element" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/serveur/element/Element.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="297" width="299" x="4495" y="1683"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="28" language="java" name="serveur.vuelement.VuePersonnage" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/serveur/vuelement/VuePersonnage.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="423" width="255" x="3474" y="1683"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="29" language="java" name="serveur.vuelement.VuePotion" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/serveur/vuelement/VuePotion.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="152" x="3769" y="1683"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="30" language="java" name="serveur.vuelement.VueElement" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/serveur/vuelement/VueElement.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="351" width="166" x="5532" y="482"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="31" language="java" name="serveur.ThreadStrategie" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/serveur/ThreadStrategie.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="152" x="2437" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="32" language="java" name="serveur.AreneTournoi" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/serveur/AreneTournoi.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="297" width="263" x="2935" y="1683"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="33" language="java" name="serveur.Arene" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/serveur/Arene.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="1161" width="347" x="2935" y="482"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="34" language="java" name="serveur.PaireRefRMIIntitiative" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/serveur/PaireRefRMIIntitiative.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="6842" y="1826"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="35" language="java" name="serveur.IAreneIHM" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/serveur/IAreneIHM.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="250" x="2645" y="1683"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="36" language="java" name="serveur.IArene" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/serveur/IArene.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="549" width="321" x="2242" y="482"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="37" language="java" name="utilitaires.Calculs" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/utilitaires/Calculs.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="7205" y="949"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="38" language="java" name="utilitaires.Constantes" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/utilitaires/Constantes.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="6752" y="956"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="39" language="java" name="utilitaires.PointComp" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/utilitaires/PointComp.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="176" x="3790" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="40" language="java" name="logger.ConsoleFormatter" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/logger/ConsoleFormatter.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="193" x="3557" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="41" language="java" name="logger.HtmlFormatter" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/logger/HtmlFormatter.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="6683" y="1435"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="42" language="java" name="logger.LoggerProjet" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/logger/LoggerProjet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="603" width="196" x="3238" y="1683"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="43" language="java" name="lanceur.LanceurPerso" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/lanceur/LanceurPerso.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="186" x="2419" y="1683"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="44" language="java" name="lanceur.LancePotion" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/lanceur/LancePotion.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="113" x="4006" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="45" language="java" name="lanceur.LanceArene" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/lanceur/LanceArene.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="113" x="3404" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="46" language="java" name="lanceur.ErreurLancement" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/lanceur/ErreurLancement.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="7251" y="1451"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="47" language="java" name="lanceur.LanceAreneTournoi" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/lanceur/LanceAreneTournoi.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="135" x="4159" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="48" language="java" name="lanceur.LanceIHMTournoi" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/lanceur/LanceIHMTournoi.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="6368" y="1448"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="49" language="java" name="lanceur.LanceIHM" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/lanceur/LanceIHM.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="113" x="3251" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="50" language="java" name="lanceur.Test" project="ProjetL3_1516" file="/ProjetL3_1516/src/lanceur/Test.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="113" x="4334" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="51" language="java" name="lanceur.LancePersonnage" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/lanceur/LancePersonnage.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="6983" y="1428"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="52" language="java" name="interfacegraphique.interfacesimple.components.VictoryScreen" 
+    project="ProjetL3_1516" file="/ProjetL3_1516/src/interfacegraphique/interfacesimple/components/VictoryScreen.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="7218" y="1806"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="53" language="java" name="interfacegraphique.interfacesimple.components.Barre" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/interfacegraphique/interfacesimple/components/Barre.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="189" width="208" x="5738" y="1683"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="54" language="java" name="interfacegraphique.interfacesimple.components.DetailCaracteristique" 
+    project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/interfacegraphique/interfacesimple/components/DetailCaracteristique.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="135" width="220" x="5738" y="482"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="55" language="java" name="interfacegraphique.interfacesimple.components.Portrait" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/interfacegraphique/interfacesimple/components/Portrait.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="153" width="208" x="2629" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="56" language="java" name="interfacegraphique.interfacesimple.AreneJPanel" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/interfacegraphique/interfacesimple/AreneJPanel.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="441" width="366" x="3617" y="482"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="57" language="java" name="interfacegraphique.interfacesimple.FenetreDetail" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/interfacegraphique/interfacesimple/FenetreDetail.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="176" x="5635" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="58" language="java" name="interfacegraphique.interfacesimple.ElementsJPanel" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/interfacegraphique/interfacesimple/ElementsJPanel.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="6276" y="952"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="59" language="java" name="interfacegraphique.interfacesimple.FenetreClassement" project="ProjetL3_1516" 
+    file="/ProjetL3_1516/src/interfacegraphique/interfacesimple/FenetreClassement.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="135" width="234" x="3322" y="482"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="60">    
+    <end type="SOURCE" refId="33" navigable="false">      
+      <attribute id="61" name="personnagesMorts"/>      
+      <multiplicity id="62" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="63">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="64" name="defenseur"/>      
+      <multiplicity id="65" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="30" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="66">    
+    <end type="SOURCE" refId="33"/>    
+    <end type="TARGET" refId="35"/>  
+  </realization>  
+  <association id="67">    
+    <end type="SOURCE" refId="56" navigable="false">      
+      <attribute id="68" name="potions"/>      
+      <multiplicity id="69" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="29" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="70">    
+    <end type="SOURCE" refId="33" navigable="false">      
+      <attribute id="71" name="potions"/>      
+      <multiplicity id="72" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="29" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="73">    
+    <bendpoint x="3586" y="482"/>    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="74" name="attaquant"/>      
+      <multiplicity id="75" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="76">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="77" name="personnage"/>      
+      <multiplicity id="78" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="79">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="24"/>  
+  </generalization>  
+  <generalization id="80">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <generalization id="81">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <generalization id="82">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="24"/>  
+  </generalization>  
+  <generalization id="83">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <generalization id="84">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="36"/>  
+  </generalization>  
+  <generalization id="85">    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="30"/>  
+  </generalization>  
+  <association id="86">    
+    <end type="SOURCE" refId="30" navigable="false">      
+      <attribute id="87" name="element"/>      
+      <multiplicity id="88" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="27" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="89">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <generalization id="90">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="24"/>  
+  </generalization>  
+  <association id="91">    
+    <end type="SOURCE" refId="57" navigable="false">      
+      <attribute id="92" name="vue"/>      
+      <multiplicity id="93" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="30" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="94">    
+    <end type="SOURCE" refId="54" navigable="false">      
+      <attribute id="95" name="barre"/>      
+      <multiplicity id="96" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="53" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="97">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <generalization id="98">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="24"/>  
+  </generalization>  
+  <generalization id="99">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <generalization id="100">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <generalization id="101">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="27"/>  
+  </generalization>  
+  <generalization id="102">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="24"/>  
+  </generalization>  
+  <generalization id="103">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="33"/>  
+  </generalization>  
+  <generalization id="104">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="24"/>  
+  </generalization>  
+  <generalization id="105">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="24"/>  
+  </generalization>  
+  <generalization id="106">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="24"/>  
+  </generalization>  
+  <generalization id="107">    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="30"/>  
+  </generalization>  
+  <generalization id="108">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="27"/>  
+  </generalization>  
+  <generalization id="109">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="24"/>  
+  </generalization>  
+  <generalization id="110">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <association id="111">    
+    <end type="SOURCE" refId="57" navigable="false">      
+      <attribute id="112" name="caractPanels"/>      
+      <multiplicity id="113" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="54" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="114">    
+    <end type="SOURCE" refId="56" navigable="false">      
+      <attribute id="115" name="personnages"/>      
+      <multiplicity id="116" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="117">    
+    <end type="SOURCE" refId="33" navigable="false">      
+      <attribute id="118" name="logger"/>      
+      <multiplicity id="119" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="42" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="120">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <association id="121">    
+    <end type="SOURCE" refId="59" navigable="false">      
+      <attribute id="122" name="classement"/>      
+      <multiplicity id="123" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="124">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <association id="125">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="126" name="arene"/>      
+      <multiplicity id="127" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="33" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="128">    
+    <end type="SOURCE" refId="33" navigable="false">      
+      <attribute id="129" name="personnages"/>      
+      <multiplicity id="130" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="131">    
+    <end type="SOURCE" refId="43" navigable="false">      
+      <attribute id="132" name="p"/>      
+      <multiplicity id="133" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="24" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="134">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
