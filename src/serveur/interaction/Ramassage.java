@@ -6,6 +6,7 @@ import java.util.logging.Level;
 
 import serveur.Arene;
 import serveur.element.Caracteristique;
+import serveur.element.PotionBuff;
 import serveur.vuelement.VuePersonnage;
 import serveur.vuelement.VuePotion;
 import utilitaires.Constantes;
@@ -40,6 +41,10 @@ public class Ramassage extends Interaction<VuePotion> {
 				
 				for(Caracteristique c : valeursPotion.keySet()) {
 					arene.incrementeCaractElement(attaquant, c, valeursPotion.get(c));
+				}
+				
+				if(defenseur.getElement() instanceof PotionBuff){
+					arene.appliquerDotHot(attaquant.getRefRMI(), ((PotionBuff)defenseur.getElement()).getDotHot());
 				}
 				
 				logs(Level.INFO, "Potion bue !");
