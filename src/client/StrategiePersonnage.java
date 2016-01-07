@@ -6,12 +6,16 @@ import java.rmi.RemoteException;
 import java.util.HashMap;
 
 import client.controle.Console;
+import client.strategies.PrendrePotion;
+import client.strategies.SimulationCombat;
 import logger.LoggerProjet;
 import serveur.IArene;
 import serveur.element.Caracteristique;
 import serveur.element.Element;
 import serveur.element.Personnage;
 import serveur.element.Potion;
+import serveur.element.personnages.Soigneur;
+import serveur.element.potions.PotionVie;
 import utilitaires.Calculs;
 import utilitaires.Constantes;
 
@@ -118,26 +122,83 @@ public class StrategiePersonnage {
 			int distPlusProche = Calculs.distanceChebyshev(position, arene.getPosition(refCible));
 
 			Element elemPlusProche = arene.elementFromRef(refCible);
+			
+			if (elemPlusProche instanceof Potion) {
+				//potion
+				if (new PrendrePotion(arene.elementFromRef(refRMI), elemPlusProche).doitPrendrePotion()) {
+					// potion benefique
+					if (distPlusProche <= Constantes.DISTANCE_MIN_INTERACTION) {
+						// ramassage si la potion est benefique
+						console.setPhrase("Je ramasse une potion");
+						arene.ramassePotion(refRMI, refCible);
+					} else {
+						// se diriger vers
+						console.setPhrase("Je vais vers la potion " + elemPlusProche.getNom());
+						arene.deplace(refRMI, refCible);
+					}
+				}
+			} else if (elemPlusProche.getGroupe() != arene.elementFromRef(refRMI).getGroupe()) {
+				// personnage ennemi
+				if (new SimulationCombat(arene.elementFromRef(refRMI), elemPlusProche).gagneDuel()) {
+					// duel suppose gagne
+					if (distPlusProche <= Constantes.DISTANCE_MIN_INTERACTION) {
+						// duel
+						console.setPhrase("Je fais un duel avec " + elemPlusProche.getNom());
+						arene.lanceAttaque(refRMI, refCible);
+					} else {
+						// poursuite
+						console.setPhrase("Je chasse " + elemPlusProche.getNom());
+						arene.deplace(refRMI, refCible);
+					}
+				} else {
+					// fuite
+					console.setPhrase("Je fuis l'ennemi "+elemPlusProche.getNom());
+					Point echapatoir = Calculs.directionOpposee(position, arene.getPosition(refCible));
+					arene.deplace(refRMI, echapatoir);
+				}
+			} else if (elemPlusProche instanceof Soigneur && elemPlusProche.getGroupe() == arene.elementFromRef(refRMI).getGroupe()
+						&& arene.elementFromRef(refRMI).getCaract(Caracteristique.VIE) < 50) {
+				// soigneur de l'equipe
+				console.setPhrase("Je me dirige vers mon soigneur "+elemPlusProche.getNom()) ;
+				arene.deplace(refRMI, refCible);
+			}
 
+			
+			
+			/*
 			if(distPlusProche <= Constantes.DISTANCE_MIN_INTERACTION) { // si suffisamment proches
 				// j'interagis directement
-				if(elemPlusProche instanceof Potion) { // potion
-					// ramassage
+				if(elemPlusProche instanceof Potion && new PrendrePotion(arene.elementFromRef(refRMI), elemPlusProche).doitPrendrePotion()) { // potion
+					// ramassage si la potion est benefique
 					console.setPhrase("Je ramasse une potion");
 					arene.ramassePotion(refRMI, refCible);
 
-				} else { // personnage
-					// duel
-					console.setPhrase("Je fais un duel avec " + elemPlusProche.getNom());
-					arene.lanceAttaque(refRMI, refCible);
+				} else if (elemPlusProche instanceof Soigneur && elemPlusProche.getGroupe() == arene.elementFromRef(refRMI).getGroupe()
+						&& arene.elementFromRef(refRMI).getCaract(Caracteristique.VIE) < 50) {
+					// soigenur de l'equipe
+					console.setPhrase("Je me dirige vers mon soigneur "+elemPlusProche.getNom()) ;
+					arene.deplace(refRMI, refCible);
+				}
+				else if (elemPlusProche.getGroupe() != arene.elementFromRef(refRMI).getGroupe()) { // personnage de groupes differents
+					if (new SimulationCombat(arene.elementFromRef(refRMI), elemPlusProche).gagneDuel()) {
+						// duel si on suppose le gagner
+						console.setPhrase("Je fais un duel avec " + elemPlusProche.getNom());
+						arene.lanceAttaque(refRMI, refCible);
+					} else {
+						// fuite
+						console.setPhrase("Je fuis l'ennemi "+elemPlusProche.getNom());
+						Point echapatoir = Calculs.directionOpposee(position, arene.getPosition(refCible));
+						arene.deplace(refRMI, echapatoir);
+					}
+					
 				}
 				
 			} else { // si voisins, mais plus eloignes
 				// je vais vers le plus proche
 				console.setPhrase("Je vais vers mon voisin " + elemPlusProche.getNom());
 				arene.deplace(refRMI, refCible);
-			}
-		}
+			} */
+		} 
 	}
 
 	
